@@ -1,77 +1,68 @@
 package fr.xebia.mowitnow;
 
-import java.util.Arrays;
-
-import lombok.RequiredArgsConstructor;
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
-@RequiredArgsConstructor
-@RunWith(Parameterized.class)
+@RunWith(JUnitParamsRunner.class)
 public class PelouseTest {
 
-  private final int largeur;
+	@Test
+	@Parameters({ "5,5", "3,6", "1,1" })
+	public void pelouseValide(final int largeur, final int longueur) {
+		pelouse(largeur, longueur);
+	}
 
-  private final int longueur;
+	@Test(expected = IllegalArgumentException.class)
+	@Parameters({ "0,0", "0,3", "2,0" })
+	public void pelouseInvalide(final int largeur, final int longueur) {
+		pelouse(largeur, longueur);
+	}
 
-  private final Class<Throwable> erreur;
+	public void pelouse(final int largeur, final int longueur) {
+		// When
+		Pelouse pelouse = new Pelouse(largeur, longueur);
 
-  @Parameters
-  public static Iterable<?> testValidPelouse() {
-    return Arrays.asList(new Object[][] { {5, 5, null}, {3, 6, null}, {1, 1, null},
-        {0, 0, IllegalArgumentException.class}, {0, 3, IllegalArgumentException.class},
-        {2, 0, IllegalArgumentException.class}});
-  }
+		// Then
+		for (int x = 0; x < largeur; x++) {
+			for (int y = 0; y < longueur; y++) {
+				Cellule cellule = pelouse.cellule(x, y);
+				Assert.assertEquals(new Position(x, y), cellule.getPosition());
+				Assert.assertFalse(cellule.isOccupe());
+				Assert.assertFalse(cellule.isTondu());
 
-  @Test
-  public void pelouse() {
-    try {
-      // When
-      Pelouse pelouse = new Pelouse(largeur, longueur);
+				Cellule droite = cellule.getVoisin(Orientation.EST);
+				if (x < largeur - 1) {
+					Assert.assertEquals(pelouse.cellule(x + 1, y), droite);
+				} else {
+					Assert.assertNull(droite);
+				}
 
-      // Then
-      for (int x = 0; x < largeur; x++) {
-        for (int y = 0; y < longueur; y++) {
-          Cellule cellule = pelouse.cellule(x, y);
-          Assert.assertEquals(new Position(x, y), cellule.getPosition());
-          Assert.assertFalse(cellule.isOccupe());
-          Assert.assertFalse(cellule.isTondu());
+				Cellule gauche = cellule.getVoisin(Orientation.WEST);
+				if (x > 0) {
+					Assert.assertEquals(pelouse.cellule(x - 1, y), gauche);
+				} else {
+					Assert.assertNull(gauche);
+				}
 
-          Cellule droite = cellule.getVoisin(Orientation.EST);
-          if (x < largeur - 1) {
-            Assert.assertEquals(pelouse.cellule(x + 1, y), droite);
-          } else {
-            Assert.assertNull(droite);
-          }
+				Cellule haut = cellule.getVoisin(Orientation.NORD);
+				if (y < longueur - 1) {
+					Assert.assertEquals(pelouse.cellule(x, y + 1), haut);
+				} else {
+					Assert.assertNull(haut);
+				}
 
-          Cellule gauche = cellule.getVoisin(Orientation.WEST);
-          if (x > 0) {
-            Assert.assertEquals(pelouse.cellule(x - 1, y), gauche);
-          } else {
-            Assert.assertNull(gauche);
-          }
+				Cellule bas = cellule.getVoisin(Orientation.SUD);
+				if (y > 0) {
+					Assert.assertEquals(pelouse.cellule(x, y - 1), bas);
+				} else {
+					Assert.assertNull(bas);
+				}
+			}
+		}
+	}
 
-          Cellule haut = cellule.getVoisin(Orientation.NORD);
-          if (y < longueur - 1) {
-            Assert.assertEquals(pelouse.cellule(x, y + 1), haut);
-          } else {
-            Assert.assertNull(haut);
-          }
-
-          Cellule bas = cellule.getVoisin(Orientation.SUD);
-          if (y > 0) {
-            Assert.assertEquals(pelouse.cellule(x, y - 1), bas);
-          } else {
-            Assert.assertNull(bas);
-          }
-        }
-      }
-    } catch (Throwable t) {
-      Assert.assertEquals(t.getClass(), erreur);
-    }
-  }
 }

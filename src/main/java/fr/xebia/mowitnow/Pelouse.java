@@ -42,13 +42,13 @@ public class Pelouse {
   private void setVoisins(final int x, final int y, final Orientation orientation) {
     int voisinX = x + orientation.x;
     int voisinY = y + orientation.y;
-    if (in(voisinX, voisinY)) {
+    if (dedans(voisinX, voisinY)) {
       grille[x][y].addVoisin(orientation, grille[voisinX][voisinY]);
       setVoisins(voisinX, voisinY, orientation);
     }
   }
 
-  private boolean in(final int x, final int y) {
+  private boolean dedans(final int x, final int y) {
     return (x < largeur && x >= 0) && (y < longueur && y >= 0);
   }
 

@@ -20,76 +20,155 @@
 		<maven.eclipse.plugin>2.9</maven.eclipse.plugin>
 		<maven.tomcat7.plugin>2.1</maven.tomcat7.plugin>
 	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>1.14.2</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+				<scope>test</scope>
+			</dependency>
+	
+			<!-- Servlet -->
+			<dependency>
+		        <groupId>org.apache.tomcat</groupId>
+		        <artifactId>tomcat-catalina</artifactId>
+		        <version>${tomcat.version}</version>
+		        <scope>provided</scope>
+	        </dependency>
+	        <dependency>
+		        <groupId>org.apache.tomcat</groupId>
+		        <artifactId>tomcat-coyote</artifactId>
+		        <version>${tomcat.version}</version>
+		        <scope>provided</scope>
+	        </dependency>
+			<!-- Jackson JSON Processor -->
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-asl</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<!-- Logging with SLF4J & LogBack -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jul-to-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-core</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+			<!-- Commons -->
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+			<!-- Tests -->
+			<dependency>
+				<groupId>pl.pragmatists</groupId>
+				<artifactId>JUnitParams</artifactId>
+  				<version>1.0.2</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-core</artifactId>
+				<version>${jbehave.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>jbehave-junit-runner</artifactId>
+				<version>${jbehave.junit.runner.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>	
+	</dependencyManagement>	
 	<dependencies>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.14.2</version>
-			<scope>provided</scope>
 		</dependency>
+
 		<!-- Servlet -->
 		<dependency>
 	        <groupId>org.apache.tomcat</groupId>
 	        <artifactId>tomcat-catalina</artifactId>
-	        <version>${tomcat.version}</version>
-	        <scope>provided</scope>
         </dependency>
         <dependency>
 	        <groupId>org.apache.tomcat</groupId>
 	        <artifactId>tomcat-coyote</artifactId>
-	        <version>${tomcat.version}</version>
-	        <scope>provided</scope>
         </dependency>
 		<!-- Jackson JSON Processor -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
-			<version>${jackson.version}</version>
 		</dependency>
 		<!-- Logging with SLF4J & LogBack -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
-			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jul-to-slf4j</artifactId>
-			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
-			<version>${logback.version}</version>
 		</dependency>
 		<!-- Commons -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>${guava.version}</version>
 		</dependency>
 		<!-- Tests -->
 		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>pl.pragmatists</groupId>
+			<artifactId>JUnitParams</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-core</artifactId>
-			<version>${jbehave.version}</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>de.codecentric</groupId>
 			<artifactId>jbehave-junit-runner</artifactId>
-			<version>${jbehave.junit.runner.version}</version>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<build>

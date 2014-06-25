@@ -5,8 +5,6 @@ import java.util.Queue;
 import lombok.Getter;
 import lombok.Setter;
 
-import com.google.common.base.Preconditions;
-
 public class Tondeuse {
 
   @Getter
@@ -15,13 +13,15 @@ public class Tondeuse {
   @Getter
   private Orientation orientation;
 
+  public Tondeuse(final Cellule cellule, final Orientation orientation) {
+	super();
+	this.cellule = cellule;
+	this.orientation = orientation;
+  }
+
   @Getter
   @Setter
   private Queue<Instruction> instructions;
-
-  public void orienter(final Orientation orientation) {
-    this.orientation = orientation;
-  }
 
   public void pivoterDroite() {
     this.orientation = this.orientation.aDroite();
@@ -34,18 +34,25 @@ public class Tondeuse {
   public void avancer() {
     Cellule next = cellule.getVoisin(orientation);
     if (next != null && !next.isOccupe()) {
-      next.verouiller();
       this.cellule.deverouiller();
       this.cellule = next;
+      this.cellule.verouiller();
+      tondre();
     }
   }
-
-
+  
+  public void tondre() {
+	 this.cellule.setTondu(true); 
+  }
+  
   public void demarrer() {
-    Preconditions.checkNotNull(instructions, "Aucune instruction programmée");
-    while (!instructions.isEmpty()) {
-      Instruction instruction = instructions.poll();
-      instruction.executer(this);
+//    Preconditions.checkNotNull(instructions, "Aucune instruction programmée");
+    tondre();
+    if (instructions != null) {
+	    while (!instructions.isEmpty()) {
+	      Instruction instruction = instructions.poll();
+	      instruction.executer(this);
+	    }
     }
   }
 }
