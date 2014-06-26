@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString(of = {"position", "occupe", "tondu"})
+@ToString(of = { "position", "occupe", "tondu" })
 @RequiredArgsConstructor
 public class Cellule {
 

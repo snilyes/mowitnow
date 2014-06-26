@@ -3,9 +3,11 @@ package fr.xebia.mowitnow;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 @RunWith(JUnitParamsRunner.class)
 public class PelouseTest {
@@ -30,39 +32,28 @@ public class PelouseTest {
 		for (int x = 0; x < largeur; x++) {
 			for (int y = 0; y < longueur; y++) {
 				Cellule cellule = pelouse.cellule(x, y);
-				Assert.assertEquals(new Position(x, y), cellule.getPosition());
-				Assert.assertFalse(cellule.isOccupe());
-				Assert.assertFalse(cellule.isTondu());
-
-				Cellule droite = cellule.getVoisin(Orientation.EST);
-				if (x < largeur - 1) {
-					Assert.assertEquals(pelouse.cellule(x + 1, y), droite);
-				} else {
-					Assert.assertNull(droite);
-				}
-
-				Cellule gauche = cellule.getVoisin(Orientation.WEST);
-				if (x > 0) {
-					Assert.assertEquals(pelouse.cellule(x - 1, y), gauche);
-				} else {
-					Assert.assertNull(gauche);
-				}
-
-				Cellule haut = cellule.getVoisin(Orientation.NORD);
-				if (y < longueur - 1) {
-					Assert.assertEquals(pelouse.cellule(x, y + 1), haut);
-				} else {
-					Assert.assertNull(haut);
-				}
-
-				Cellule bas = cellule.getVoisin(Orientation.SUD);
-				if (y > 0) {
-					Assert.assertEquals(pelouse.cellule(x, y - 1), bas);
-				} else {
-					Assert.assertNull(bas);
-				}
+				assertEquals(new Position(x, y), cellule.getPosition());
+				assertFalse(cellule.isOccupe());
+				assertFalse(cellule.isTondu());
+				assertVoisin(pelouse, Orientation.EST, cellule.getPosition(), new Position(x + 1, y));
+				assertVoisin(pelouse, Orientation.WEST, cellule.getPosition(), new Position(x - 1, y));
+				assertVoisin(pelouse, Orientation.NORD, cellule.getPosition(), new Position(x, y + 1));
+				assertVoisin(pelouse, Orientation.SUD, cellule.getPosition(), new Position(x, y - 1));
 			}
 		}
 	}
-
+	
+	public void assertVoisin(final Pelouse pelouse, final Orientation orientation, final Position position, final Position positionAttendue) {
+		Cellule cellule = pelouse.cellule(position);
+		Cellule actuelle = cellule.getVoisin(orientation);
+		Cellule attendue = null;
+		if (entre(positionAttendue.getX(), 0, pelouse.getLargeur()) && entre(positionAttendue.getY(), 0, pelouse.getLongueur())){
+			attendue = pelouse.cellule(positionAttendue);
+		}
+		assertEquals(attendue, actuelle);
+	}
+	
+	public boolean entre(final int position, final int min, final int max) {
+		return position >= min && position < max; 
+	}
 }
