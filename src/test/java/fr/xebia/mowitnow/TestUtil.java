@@ -1,32 +1,18 @@
 package fr.xebia.mowitnow;
 
+import fr.xebia.mowitnow.base.Orientation;
+import fr.xebia.mowitnow.tonte.Instruction;
+
+
 final class TestUtil {
-	
-	static Orientation est() {
-		return Orientation.EST;
-	}
 
-	static Orientation nord() {
-		return Orientation.NORD;
-	}
+  static final Orientation EST = Orientation.EST;
+  static final Orientation NORD = Orientation.NORD;
+  static final Orientation WEST = Orientation.WEST;
+  static final Orientation SUD = Orientation.SUD;
 
-	static Orientation sud() {
-		return Orientation.SUD;
-	}
+  static final Instruction D = Instruction.PIVOTER_DROITE;
+  static final Instruction G = Instruction.PIVOTER_GAUCHE;
+  static final Instruction A = Instruction.AVANCER;
 
-	static Orientation west() {
-		return Orientation.WEST;
-	}
-	
-	static Instruction droite() {
-		return Instruction.PIVOTER_DROITE;
-	}
-
-	static Instruction gauche() {
-		return Instruction.PIVOTER_GAUCHE;
-	}
-
-	static Instruction avancer() {
-		return Instruction.AVANCER;
-	}
 }
