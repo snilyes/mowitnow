@@ -1,18 +1,26 @@
 package fr.xebia.mowitnow;
 
+import static fr.xebia.mowitnow.TestUtil.A;
+import static fr.xebia.mowitnow.TestUtil.D;
+import static fr.xebia.mowitnow.TestUtil.G;
+import static org.junit.Assert.assertEquals;
+
+import java.util.Queue;
+
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import fr.xebia.mowitnow.base.Orientation;
+import fr.xebia.mowitnow.io.parseur.InstructionParseur;
 import fr.xebia.mowitnow.io.parseur.PelouseParseur;
 import fr.xebia.mowitnow.io.parseur.TondeuseParseur;
-import fr.xebia.mowitnow.jardin.Pelouse;
+import fr.xebia.mowitnow.tonte.Instruction;
+import fr.xebia.mowitnow.tonte.Pelouse;
 import fr.xebia.mowitnow.tonte.Tondeuse;
-
-import static org.junit.Assert.assertEquals;
 
 @RunWith(JUnitParamsRunner.class)
 public class ParseurTest {
@@ -48,6 +56,25 @@ public class ParseurTest {
   @Parameters(value = {"4 4 W", "2 2 B", "", "bla", "1 2 S 2"})
   public void tondeuseParseurKoTest(final String line) {
     new TondeuseParseur(new Pelouse(4, 4)).parse(line);
+  }
+
+
+  @Test
+  @Parameters(method = "instructionParserParam")
+  public void instructionsParseurTest(final String line, final Instruction[] attendue) {
+    InstructionParseur parseur = new InstructionParseur();
+    Queue<Instruction> actuelle = parseur.parse(line);
+    Assert.assertArrayEquals(attendue, actuelle.toArray());
+  }
+
+  public Object[] instructionParserParam() {
+    return new Object[] {"ADGAD", new Instruction[] {A, D, G, A, D}};
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  @Parameters(value = {" A", "DD ", "AZA"})
+  public void instructionsParseurKoTest(final String line) {
+    new InstructionParseur().parse(line);
   }
 
 }

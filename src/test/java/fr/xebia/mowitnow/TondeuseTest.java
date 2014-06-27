@@ -10,11 +10,14 @@ import static fr.xebia.mowitnow.TestUtil.WEST;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
+import java.util.Observable;
+import java.util.Observer;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,12 +25,14 @@ import org.junit.runner.RunWith;
 import com.google.common.collect.Lists;
 
 import fr.xebia.mowitnow.TondeuseTest.Data.DataBuilder;
+import fr.xebia.mowitnow.base.Cellule;
 import fr.xebia.mowitnow.base.Orientation;
-import fr.xebia.mowitnow.jardin.Cellule;
-import fr.xebia.mowitnow.jardin.Pelouse;
+import fr.xebia.mowitnow.io.AsciiGrid;
 import fr.xebia.mowitnow.tonte.Instruction;
+import fr.xebia.mowitnow.tonte.Pelouse;
 import fr.xebia.mowitnow.tonte.Tondeuse;
 
+@Slf4j
 @RunWith(JUnitParamsRunner.class)
 public class TondeuseTest {
 
@@ -35,7 +40,6 @@ public class TondeuseTest {
   @Parameters
   public void demarrerTest(final Data data) {
     data.tondeuse.demarrer();
-    data.pelouse.afficher();
     assertEquals(data.orientationAttendue, data.tondeuse.getOrientation());
     assertEquals(data.celluleAttendue, data.tondeuse.getCellule());
   }
@@ -51,7 +55,7 @@ public class TondeuseTest {
   }
 
   @lombok.Data
-  static class Data {
+  static class Data implements Observer {
 
     private Pelouse pelouse;
     private Tondeuse tondeuse;
@@ -60,6 +64,11 @@ public class TondeuseTest {
 
     Cellule on(final int x, final int y) {
       return pelouse.cellule(x, y);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+      log.debug(AsciiGrid.dessiner(pelouse, tondeuse));
     }
 
     @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
@@ -75,6 +84,7 @@ public class TondeuseTest {
 
       DataBuilder tondeuse(final int x, final int y, final Orientation o) {
         data.tondeuse = new Tondeuse(data.on(x, y), o);
+        data.tondeuse.addObserver(data);
         return this;
       }
 

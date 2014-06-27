@@ -6,10 +6,10 @@ import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import fr.xebia.mowitnow.base.Cellule;
 import fr.xebia.mowitnow.base.Orientation;
 import fr.xebia.mowitnow.base.Position;
-import fr.xebia.mowitnow.jardin.Cellule;
-import fr.xebia.mowitnow.jardin.Pelouse;
+import fr.xebia.mowitnow.tonte.Pelouse;
 
 import static fr.xebia.mowitnow.TestUtil.EST;
 import static fr.xebia.mowitnow.TestUtil.NORD;

@@ -6,7 +6,10 @@ import java.util.Observer;
 
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
+import fr.xebia.mowitnow.io.AsciiGrid;
 
+@Slf4j
 public class TondeuseMoniteur implements Observer {
 
   public TondeuseMoniteur(Pelouse pelouse, List<Tondeuse> tondeuses) {
@@ -36,6 +39,7 @@ public class TondeuseMoniteur implements Observer {
 
   @Override
   public void update(final Observable o, final Object arg) {
-    pelouse.afficher();
+    log.debug(AsciiGrid.dessiner(pelouse, tondeuses.toArray(new Tondeuse[] {})));
+
   }
 }

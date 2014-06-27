@@ -1,29 +1,37 @@
 package fr.xebia.mowitnow.io;
 
+import java.util.Arrays;
+
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import org.apache.commons.lang.text.StrBuilder;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Strings;
+import com.google.common.collect.Iterables;
 
+import fr.xebia.mowitnow.base.Cellule;
 import fr.xebia.mowitnow.tonte.Pelouse;
+import fr.xebia.mowitnow.tonte.Tondeuse;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AsciiGrid {
 
 
-  public static String dessiner(final Pelouse pelouse) {
+  public static String dessiner(final Pelouse pelouse, final Tondeuse... tondeuses) {
     int largeur = pelouse.getLargeur(), longeur = pelouse.getLongueur();
+    boolean withTondeuse = tondeuses.length > 0;
     GridBuilder builder = new GridBuilder();
     builder.append("\n\n");
     for (int y = longeur - 1; y >= 0; y--) {
-      for (int x = -1; x < largeur; x++) {
-        if (x < 0) {
-          builder.cell(y);
-        } else if (pelouse.cellule(x, y).isOccupe()) {
-          builder.cell('x');
-        } else if (pelouse.cellule(x, y).isTondu()) {
+      builder.cell(y);
+      for (int x = 0; x < largeur; x++) {
+        Cellule cell = pelouse.cellule(x, y);
+
+        if (cell.isOccupe()) {
+          builder.cell(withTondeuse ? orientation(cell, tondeuses) : 'x');
+        } else if (cell.isTondu()) {
           builder.cell('-');
         } else {
           builder.cell(' ');
@@ -40,8 +48,13 @@ public final class AsciiGrid {
     return builder.toString();
   }
 
-  public static void main(final String... strings) {
-    new Pelouse(7, 5);
+  private static char orientation(final Cellule cell, final Tondeuse... tondeuses) {
+    return Iterables.find(Arrays.asList(tondeuses), new Predicate<Tondeuse>() {
+      @Override
+      public boolean apply(Tondeuse input) {
+        return input.getCellule().equals(cell);
+      }
+    }).getOrientation().getCode().charAt(0);
   }
 
   static class GridBuilder extends StrBuilder {
