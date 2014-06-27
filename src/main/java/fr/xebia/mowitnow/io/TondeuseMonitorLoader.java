@@ -18,8 +18,8 @@ import com.google.common.io.Files;
 import fr.xebia.mowitnow.io.parseur.InstructionParseur;
 import fr.xebia.mowitnow.io.parseur.PelouseParseur;
 import fr.xebia.mowitnow.io.parseur.TondeuseParseur;
-import fr.xebia.mowitnow.jardin.Pelouse;
 import fr.xebia.mowitnow.tonte.Instruction;
+import fr.xebia.mowitnow.tonte.Pelouse;
 import fr.xebia.mowitnow.tonte.Tondeuse;
 import fr.xebia.mowitnow.tonte.TondeuseMoniteur;
 

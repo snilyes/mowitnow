@@ -1,10 +1,11 @@
-package fr.xebia.mowitnow.jardin;
+package fr.xebia.mowitnow.tonte;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import fr.xebia.mowitnow.base.Cellule;
 import fr.xebia.mowitnow.base.Orientation;
 import fr.xebia.mowitnow.base.Position;
 import fr.xebia.mowitnow.io.AsciiGrid;

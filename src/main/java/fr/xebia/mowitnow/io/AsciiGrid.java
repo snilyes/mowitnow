@@ -1,11 +1,15 @@
 package fr.xebia.mowitnow.io;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import org.apache.commons.lang.text.StrBuilder;
 
 import com.google.common.base.Strings;
 
-import fr.xebia.mowitnow.jardin.Pelouse;
+import fr.xebia.mowitnow.tonte.Pelouse;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AsciiGrid {
 
 

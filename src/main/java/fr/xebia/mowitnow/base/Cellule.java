@@ -1,18 +1,17 @@
-package fr.xebia.mowitnow.jardin;
+package fr.xebia.mowitnow.base;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.xebia.mowitnow.base.Orientation;
-import fr.xebia.mowitnow.base.Position;
-
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString(of = {"position", "occupe", "tondu"})
+@ToString(exclude = {"voisins"})
+@EqualsAndHashCode(exclude = {"voisins"})
 @RequiredArgsConstructor
 public class Cellule {
 

@@ -1,7 +1,5 @@
 package fr.xebia.mowitnow.tonte;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Observable;
 import java.util.Queue;
 
@@ -10,10 +8,10 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import fr.xebia.mowitnow.base.Cellule;
 import fr.xebia.mowitnow.base.Mobile;
 import fr.xebia.mowitnow.base.Orientation;
 import fr.xebia.mowitnow.base.Position;
-import fr.xebia.mowitnow.jardin.Cellule;
 
 @Slf4j
 @EqualsAndHashCode(callSuper = false)
@@ -35,7 +33,7 @@ public class Tondeuse extends Observable implements Mobile {
   @Getter
   @Setter
   @NonNull
-  private Queue<Instruction> instructions = new LinkedList<Instruction>();
+  private Queue<Instruction> instructions;
 
   @Override
   public void pivoterDroite() {
@@ -66,7 +64,7 @@ public class Tondeuse extends Observable implements Mobile {
     log.debug("Demarrage " + toString() + " ...");
     tondre();
     int index = 1;
-    if (!instructions.isEmpty()) {
+    if (instructions != null && !instructions.isEmpty()) {
       while (!instructions.isEmpty()) {
         Instruction instruction = instructions.poll();
         instruction.executer(this);
@@ -82,10 +80,6 @@ public class Tondeuse extends Observable implements Mobile {
 
   public Position position() {
     return cellule.getPosition();
-  }
-
-  public void ajouter(@NonNull final List<Instruction> instructions) {
-    this.instructions.addAll(instructions);
   }
 
   @Override

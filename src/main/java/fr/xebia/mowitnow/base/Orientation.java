@@ -41,7 +41,7 @@ public enum Orientation {
     return Iterators.tryFind(Iterators.forArray(values()), new Predicate<Orientation>() {
       @Override
       public boolean apply(final Orientation input) {
-        return code.equals(input.code);
+        return input != null && code.equals(input.code);
       }
     }).get();
   }

@@ -1,13 +1,14 @@
 package fr.xebia.mowitnow.io.parseur;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.util.List;
 
 import lombok.NonNull;
 
 import com.google.common.base.Splitter;
 
-import fr.xebia.mowitnow.jardin.Pelouse;
-import static com.google.common.base.Preconditions.checkArgument;
+import fr.xebia.mowitnow.tonte.Pelouse;
 
 public class PelouseParseur implements Parseur<String, Pelouse> {
 
@@ -20,7 +21,7 @@ public class PelouseParseur implements Parseur<String, Pelouse> {
         "Erreur de parse des infos de la tondeuse [attendue: 'largeur longueur'; actuelle: '"
             + source + "']");
     List<String> champs = Splitter.on(SEPARATOR).splitToList(source);
-    return new Pelouse(new Integer(champs.get(0)), new Integer(champs.get(1)));
+    return new Pelouse(Integer.valueOf(champs.get(0)), Integer.valueOf(champs.get(1)));
   }
 
 }
