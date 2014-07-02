@@ -25,7 +25,7 @@ import fr.xebia.mowitnow.tonte.TondeuseMoniteur;
 
 public class TondeuseMonitorLoader {
 
-  private static final String LINE_SEPRATOR = System.getProperty("line.separator");
+  private static final String LINE_SEPRATOR = "\n";
 
   @SneakyThrows(IOException.class)
   public TondeuseMoniteur fromFile(final File file) {

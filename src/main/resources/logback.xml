@@ -7,7 +7,7 @@
 	
 	<logger name="fr.xebia.mowitnow" level="debug" />
 	
-	<root level="warn">
+	<root level="debug">
 		<appender-ref ref="STDOUT" />
 	</root>
 </configuration>
