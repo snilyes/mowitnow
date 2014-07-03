@@ -26,8 +26,8 @@ public class TondeuseParseur implements Parseur<String, Tondeuse> {
         "Erreur de parse des infos de la tondeuse [attendue: 'x y Orientaion'; actuelle: '"
             + source + "']");
     List<String> champs = Splitter.on(SEPARATOR).splitToList(source);
-    int x = Integer.valueOf(champs.get(0));
-    int y = Integer.valueOf(champs.get(1));
+    int x = Integer.valueOf(champs.get(0)) - 1;
+    int y = Integer.valueOf(champs.get(1)) - 1;
     Orientation orientation = Orientation.parCode(champs.get(2));
     return new Tondeuse(pelouse.cellule(x, y), orientation);
   }

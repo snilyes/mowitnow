@@ -13,7 +13,6 @@
 	<name>mowitnow</name>
 	<properties>
 		<java.version>1.6</java.version>
-		<tomcat.version>8.0.8</tomcat.version>
 		<slf4j.version>1.7.7</slf4j.version>
 		<logback.version>1.1.2</logback.version>
 		<commons.lang.version>2.6</commons.lang.version>
@@ -23,7 +22,7 @@
 		<junitparams.version>1.0.2</junitparams.version>
 		<jbehave.version>3.9.2</jbehave.version>
 		<jbehave.junit.runner.version>1.1.1</jbehave.junit.runner.version>
-<!-- 		<jackson.version>1.9.13</jackson.version> -->
+		<!-- <jackson.version>1.9.13</jackson.version> -->
 		<maven.compiler.plugin>3.1</maven.compiler.plugin>
 		<maven.eclipse.plugin>2.9</maven.eclipse.plugin>
 		<maven.tomcat7.plugin>2.2</maven.tomcat7.plugin>
@@ -47,6 +46,11 @@
 	</properties>
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+			</dependency>
+
 			<!-- Lombok -->
 			<dependency>
 				<groupId>org.projectlombok</groupId>
@@ -55,19 +59,6 @@
 				<scope>provided</scope>
 			</dependency>
 
-			<!-- Servlet -->
-			<dependency>
-				<groupId>org.apache.tomcat</groupId>
-				<artifactId>tomcat-catalina</artifactId>
-				<version>${tomcat.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.tomcat</groupId>
-				<artifactId>tomcat-coyote</artifactId>
-				<version>${tomcat.version}</version>
-				<scope>provided</scope>
-			</dependency>
 			<!-- Jackson JSON Processor -->
 			<dependency>
 				<groupId>org.codehaus.jackson</groupId>
@@ -139,34 +130,38 @@
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
-		<!-- Spring -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-websocket</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-messaging</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
 
-		<!-- Servlet -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-messaging</artifactId>
+        </dependency>
+
 		<dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>tomcat-catalina</artifactId>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<!-- <version>2.3.0</version> -->
 		</dependency>
+
 		<dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>tomcat-coyote</artifactId>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<!-- <version>2.3.0</version> -->
 		</dependency>
+
+
 		<!-- Jackson JSON Processor -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.codehaus.jackson</groupId> -->
-<!-- 			<artifactId>jackson-mapper-asl</artifactId> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.codehaus.jackson</groupId> -->
+		<!-- <artifactId>jackson-mapper-asl</artifactId> -->
+		<!-- </dependency> -->
 		<!-- Logging with SLF4J & LogBack -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -216,12 +211,12 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>${artifactId}</finalName>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven.compiler.plugin}</version>
+				<!-- <version>${maven.compiler.plugin}</version> -->
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
@@ -230,7 +225,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>${maven.eclipse.plugin}</version>
+				<!-- <version>${maven.eclipse.plugin}</version> -->
 				<configuration>
 					<wtpversion>2.0</wtpversion>
 					<downloadSources>true</downloadSources>
@@ -249,7 +244,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>${maven.site.plugin}</version>
+				<!-- <version>${maven.site.plugin}</version> -->
 				<executions>
 					<execution>
 						<id>attach-descriptor</id>

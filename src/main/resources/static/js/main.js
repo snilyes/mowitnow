@@ -1,35 +1,45 @@
-var lawn;
 var queue = [];
 var interval;
 var stompClient = null;
-var tondeuses = null;
-var pelouse = null;
 $(connect);
 
 function connect() {
 	if (stompClient) {
 	    stompClient.disconnect();
 	}
-    var socket = new SockJS('/hello');
+	
+    var socket = new SockJS('/mowitnow');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function(frame) {
-       // setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/greetings', function(data){
+        stompClient.subscribe('/mowers/init', function(data){
+        	drawLawn($.parseJSON(data.body));
+        });
+        stompClient.subscribe('/mowers/update', function(data){
         	queue.push($.parseJSON(data.body));
         });
 
-        stompClient.subscribe('/topic/load', function(data){
-        	drawLawn($.parseJSON(data.body));
-        });
+        stompClient.subscribe('/mowers/error', function(data){
+    		$("#instructions-help").text(data.body);
+    		$("#instructions-group").removeClass("error");
+    	});
 
+    	$("#start").removeAttr("disabled");
+    	$("#start").text("Start!");
+
+    	$("#start").click(function() {
+    		console.log('Start!');
+    		start();
+    	    return false;
+    	});
     });
 }
 
 function start() {
     var instructions = $("#instructions").val();
-    stompClient.send("/app/hello", {}, JSON.stringify(instructions));
-    interval = self.setInterval(function(){clock()},500);
+    stompClient.send("/app/execute", {}, JSON.stringify(instructions));
+    $("#mowersound")[0].play();
+    interval = self.setInterval(function(){clock();},500);
 }
 
 function clock() {
@@ -40,12 +50,13 @@ function clock() {
 		$("#instructions-help").text(parsedJSON);
 		$("#instructions-group").addClass("error");
 	    clearInterval(interval);
+	    $("#mowersound")[0].pause();
 	}
 }
 
 function drawLawn(monitor) {
-	pelouse = monitor.pelouse;
-	tondeuses = monitor.tondeuses;
+	var pelouse = monitor.pelouse;
+	var tondeuses = monitor.tondeuses;
 
 	var cellWith = 50;
 	if ($("canvas")) {
@@ -71,7 +82,7 @@ function drawLawn(monitor) {
 			  strokeStyle: "#2a5",
 			  strokeWidth: 1,
 			  x: 10 + cellWith * i + (cellWith / 2) , y: 10 + cellWith * (pelouse.longueur),
-			  text: i
+			  text: i + 1
 		});
 	}
 
@@ -80,8 +91,8 @@ function drawLawn(monitor) {
 			  fillStyle: "#9cf",
 			  strokeStyle: "#2a5",
 			  strokeWidth: 1,
-			  x: 10, y: cellWith * j + (cellWith / 2),
-			  text: pelouse.longueur - j - 1
+			  x: 10, y: cellWith * (pelouse.longueur - j - 1) + (cellWith / 2),
+			  text: j + 1
 		});
 	}
 
@@ -90,7 +101,7 @@ function drawLawn(monitor) {
 		$("canvas").drawImage({
 			source : "img/mower-" + tondeuse.orientation + ".png",
 			x : 20 + tondeuse.cellule.position.x * cellWith,
-			y : tondeuse.cellule.position.y * cellWith,
+			y : (pelouse.longueur - tondeuse.cellule.position.y - 1) * cellWith,
 			width: cellWith,
 			height: cellWith,
 			fromCenter : false,
@@ -98,38 +109,4 @@ function drawLawn(monitor) {
 		});
 	}
 }
-
-function drawMower(mower) {
-	$("canvas").drawImage({
-		source : "img/mowed_grass.jpg",
-		x : mower.x * 100,
-		y : ((lawn.height) - mower.y) * 100,
-		fromCenter : false
-	});
-	$("canvas").drawImage({
-		source : "img/mower-" + mower.orientation + ".png",
-		x : mower.x * 100,
-		y : ((lawn.height) - mower.y) * 100,
-		fromCenter : false
-	});
-}
-
-function deleteMower(mower) {
-	$("canvas").drawImage({
-		source : "img/mowed_grass.jpg",
-		x : mower.x * 100,
-		y : ((lawn.height) - mower.y) * 100,
-		fromCenter : false
-	});
-}
-
-
-$("#start").click(function() {
-	$("#instructions-help").text("");
-	$("#instructions-group").removeClass("error");
-	console.log('Start!');
-	//interval = self.setInterval(function(){clock()},300);
-	start();
-    return false;
-});
 

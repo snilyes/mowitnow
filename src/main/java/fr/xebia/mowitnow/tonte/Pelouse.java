@@ -62,7 +62,7 @@ public class Pelouse {
   }
 
   public Cellule cellule(final int x, final int y) {
-    checkArgument(dedans(x, y), "la position (" + x + ',' + y + ") est en dehors de la pelouse");
+    checkArgument(dedans(x, y), "la position (" + (x + 1) + ',' + (y + 1) + ") est en dehors de la pelouse");
     return grille[x][y];
   }
 
