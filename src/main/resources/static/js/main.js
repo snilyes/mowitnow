@@ -13,6 +13,7 @@ function connect() {
     stompClient.connect({}, function(frame) {
         console.log('Connected: ' + frame);
         stompClient.subscribe('/mowers/init', function(data){
+    		$("#instructions-error").text('').hide();
         	drawLawn($.parseJSON(data.body));
         });
         stompClient.subscribe('/mowers/update', function(data){
@@ -20,11 +21,10 @@ function connect() {
         });
 
         stompClient.subscribe('/mowers/error', function(data){
-    		$("#instructions-help").text(data.body);
-    		$("#instructions-group").removeClass("error");
+    		$("#instructions-error").append("<strong>Erreur</strong>: " + data.body).show();
     	});
 
-    	$("#start").removeAttr("disabled");
+    	$("#start").removeAttr("disabled").removeClass('btn-default').addClass('btn-primary');
     	$("#start").text("Start!");
 
     	$("#start").click(function() {
@@ -47,8 +47,6 @@ function clock() {
 	if (parsedJSON) {
     	drawLawn(parsedJSON);
 	} else {
-		$("#instructions-help").text(parsedJSON);
-		$("#instructions-group").addClass("error");
 	    clearInterval(interval);
 	    $("#mowersound")[0].pause();
 	}
