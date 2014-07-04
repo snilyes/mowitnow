@@ -1,4 +1,4 @@
-package fr.xebia.mowitnow;
+package fr.xebia.mowitnow.unit;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
@@ -11,10 +11,10 @@ import fr.xebia.mowitnow.base.Orientation;
 import fr.xebia.mowitnow.base.Position;
 import fr.xebia.mowitnow.tonte.Pelouse;
 
-import static fr.xebia.mowitnow.TestUtil.EST;
-import static fr.xebia.mowitnow.TestUtil.NORD;
-import static fr.xebia.mowitnow.TestUtil.SUD;
-import static fr.xebia.mowitnow.TestUtil.WEST;
+import static fr.xebia.mowitnow.unit.TestUtil.EST;
+import static fr.xebia.mowitnow.unit.TestUtil.NORD;
+import static fr.xebia.mowitnow.unit.TestUtil.SUD;
+import static fr.xebia.mowitnow.unit.TestUtil.WEST;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

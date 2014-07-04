@@ -1,4 +1,4 @@
-package fr.xebia.mowitnow;
+package fr.xebia.mowitnow.unit;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;

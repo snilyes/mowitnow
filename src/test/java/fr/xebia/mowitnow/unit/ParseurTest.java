@@ -1,9 +1,4 @@
-package fr.xebia.mowitnow;
-
-import static fr.xebia.mowitnow.TestUtil.A;
-import static fr.xebia.mowitnow.TestUtil.D;
-import static fr.xebia.mowitnow.TestUtil.G;
-import static org.junit.Assert.assertEquals;
+package fr.xebia.mowitnow.unit;
 
 import java.util.Queue;
 
@@ -21,6 +16,11 @@ import fr.xebia.mowitnow.io.parseur.TondeuseParseur;
 import fr.xebia.mowitnow.tonte.Instruction;
 import fr.xebia.mowitnow.tonte.Pelouse;
 import fr.xebia.mowitnow.tonte.Tondeuse;
+import static fr.xebia.mowitnow.unit.TestUtil.A;
+import static fr.xebia.mowitnow.unit.TestUtil.D;
+import static fr.xebia.mowitnow.unit.TestUtil.G;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(JUnitParamsRunner.class)
 public class ParseurTest {
@@ -48,12 +48,12 @@ public class ParseurTest {
     Pelouse pelouse = new Pelouse(4, 4);
     TondeuseParseur parseur = new TondeuseParseur(pelouse);
     Tondeuse actuelle = parseur.parse(line);
-    Tondeuse attendue = new Tondeuse(pelouse.cellule(x, y), orientation);
+    Tondeuse attendue = new Tondeuse(pelouse.cellule(x - 1, y - 1), orientation);
     assertEquals(attendue, actuelle);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  @Parameters(value = {"4 4 W", "2 2 B", "", "bla", "1 2 S 2"})
+  @Parameters(value = {"5 5 W", "2 2 B", "", "bla", "1 2 S 2"})
   public void tondeuseParseurKoTest(final String line) {
     new TondeuseParseur(new Pelouse(4, 4)).parse(line);
   }

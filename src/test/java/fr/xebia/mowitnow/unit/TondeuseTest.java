@@ -1,12 +1,13 @@
-package fr.xebia.mowitnow;
+package fr.xebia.mowitnow.unit;
 
-import static fr.xebia.mowitnow.TestUtil.A;
-import static fr.xebia.mowitnow.TestUtil.D;
-import static fr.xebia.mowitnow.TestUtil.EST;
-import static fr.xebia.mowitnow.TestUtil.G;
-import static fr.xebia.mowitnow.TestUtil.NORD;
-import static fr.xebia.mowitnow.TestUtil.SUD;
-import static fr.xebia.mowitnow.TestUtil.WEST;
+import static fr.xebia.mowitnow.unit.TestUtil.A;
+import static fr.xebia.mowitnow.unit.TestUtil.D;
+import static fr.xebia.mowitnow.unit.TestUtil.EST;
+import static fr.xebia.mowitnow.unit.TestUtil.G;
+import static fr.xebia.mowitnow.unit.TestUtil.NORD;
+import static fr.xebia.mowitnow.unit.TestUtil.SUD;
+import static fr.xebia.mowitnow.unit.TestUtil.WEST;
+
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
@@ -24,13 +25,13 @@ import org.junit.runner.RunWith;
 
 import com.google.common.collect.Lists;
 
-import fr.xebia.mowitnow.TondeuseTest.Data.DataBuilder;
 import fr.xebia.mowitnow.base.Cellule;
 import fr.xebia.mowitnow.base.Orientation;
 import fr.xebia.mowitnow.io.AsciiGrid;
 import fr.xebia.mowitnow.tonte.Instruction;
 import fr.xebia.mowitnow.tonte.Pelouse;
 import fr.xebia.mowitnow.tonte.Tondeuse;
+import fr.xebia.mowitnow.unit.TondeuseTest.Data.DataBuilder;
 
 @Slf4j
 @RunWith(JUnitParamsRunner.class)

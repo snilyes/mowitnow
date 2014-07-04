@@ -1,4 +1,4 @@
-package fr.xebia.mowitnow;
+package fr.xebia.mowitnow.unit;
 
 import fr.xebia.mowitnow.base.Orientation;
 import fr.xebia.mowitnow.tonte.Instruction;
