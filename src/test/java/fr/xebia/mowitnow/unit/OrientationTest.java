@@ -13,14 +13,14 @@ import fr.xebia.mowitnow.base.Orientation;
 public class OrientationTest {
 
   @Test
-  @Parameters({"EST, SUD", "SUD, WEST", "WEST, NORD", "NORD, EST"})
-  public void aDroiteTest(final Orientation initiale, final Orientation finale) {
-    Assert.assertEquals(initiale.aDroite(), finale);
+  @Parameters({"EAST, SOUTH", "SOUTH, WEST", "WEST, NORTH", "NORTH, EAST"})
+  public void rightTest(final Orientation initiale, final Orientation finale) {
+    Assert.assertEquals(initiale.right(), finale);
   }
 
   @Test
-  @Parameters({"EST, NORD", "NORD, WEST", "WEST, SUD", "SUD, EST"})
-  public void aGaucheTest(final Orientation initiale, final Orientation finale) {
-    Assert.assertEquals(initiale.aGauche(), finale);
+  @Parameters({"EAST, NORTH", "NORTH, WEST", "WEST, SOUTH", "SOUTH, EAST"})
+  public void leftTest(final Orientation initiale, final Orientation finale) {
+    Assert.assertEquals(initiale.left(), finale);
   }
 }

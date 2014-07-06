@@ -1,4 +1,4 @@
-package fr.xebia.mowitnow.io;
+package fr.xebia.mowitnow.util;
 
 import java.util.Arrays;
 
@@ -11,48 +11,55 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Strings;
 import com.google.common.collect.Iterables;
 
-import fr.xebia.mowitnow.base.Cellule;
-import fr.xebia.mowitnow.tonte.Pelouse;
-import fr.xebia.mowitnow.tonte.Tondeuse;
+import fr.xebia.mowitnow.base.Cell;
+import fr.xebia.mowitnow.mower.Lawn;
+import fr.xebia.mowitnow.mower.Mower;
 
+/**
+ * Classe utilitaire permettant de dessiner une grille representant une pelouse contenant des
+ * tondeuses orientées
+ * 
+ * @author ilyes
+ *
+ */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AsciiGrid {
 
 
-  public static String dessiner(final Pelouse pelouse, final Tondeuse... tondeuses) {
-    int largeur = pelouse.getLargeur(), longeur = pelouse.getLongueur();
-    boolean withTondeuse = tondeuses.length > 0;
+  public static String draw(final Lawn lawn, final Mower... mowers) {
+    int width = lawn.getWidth(), height = lawn.getHeight();
+    boolean withMower = mowers.length > 0;
     GridBuilder builder = new GridBuilder();
     builder.append("\n\n");
-    for (int y = longeur - 1; y >= 0; y--) {
+    for (int y = height - 1; y >= 0; y--) {
       builder.cell(y);
-      for (int x = 0; x < largeur; x++) {
-        Cellule cell = pelouse.cellule(x, y);
+      for (int x = 0; x < width; x++) {
+        Cell cell = lawn.cellAt(x, y);
 
-        if (cell.isOccupe()) {
-          builder.cell(withTondeuse ? orientation(cell, tondeuses) : 'x');
-        } else if (cell.isTondu()) {
+        if (cell.isLock()) {
+          builder.cell(withMower ? orientation(cell, mowers) : 'x');
+        } else if (cell.isMowed()) {
           builder.cell('-');
         } else {
           builder.cell(' ');
         }
       }
-      builder.line(largeur);
+      builder.line(width);
     }
 
     builder.cell();
-    for (int i = 0; i < largeur; i++) {
+    for (int i = 0; i < width; i++) {
       builder.cell(i);
     }
     builder.append("\n\n");
     return builder.toString();
   }
 
-  private static char orientation(final Cellule cell, final Tondeuse... tondeuses) {
-    return Iterables.find(Arrays.asList(tondeuses), new Predicate<Tondeuse>() {
+  private static char orientation(final Cell cell, final Mower... mowers) {
+    return Iterables.find(Arrays.asList(mowers), new Predicate<Mower>() {
       @Override
-      public boolean apply(Tondeuse input) {
-        return input.getCellule().equals(cell);
+      public boolean apply(Mower input) {
+        return input.getCell().equals(cell);
       }
     }).getOrientation().getCode().charAt(0);
   }

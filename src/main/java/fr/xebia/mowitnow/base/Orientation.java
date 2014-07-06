@@ -6,27 +6,58 @@ import lombok.RequiredArgsConstructor;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 
+
+/**
+ * Les 4 directions possibles representées par un vecteur (x, y)
+ * 
+ * @author ilyes
+ *
+ */
 @RequiredArgsConstructor
 public enum Orientation {
-  EST("E", 1, 0), NORD("N", 0, 1), WEST("W", -1, 0), SUD("S", 0, -1);
+  EAST("E", 1, 0), NORTH("N", 0, 1), WEST("W", -1, 0), SOUTH("S", 0, -1);
 
+  /**
+   * Identifiant de l'orientation
+   */
   @Getter
   final String code;
 
+  /**
+   * Abscisse du vecteur
+   */
   @Getter
   final int x;
+
+  /**
+   * Ordonné du vecteur
+   */
   @Getter
   final int y;
 
-  public Orientation aDroite() {
-    return parVecteur(y, -x);
+  /**
+   * 
+   * @return L'orientation de droite
+   */
+  public Orientation right() {
+    return byVector(y, -x);
   }
 
-  public Orientation aGauche() {
-    return parVecteur(-y, x);
+  /**
+   * 
+   * @return L'orientation de gauche
+   */
+  public Orientation left() {
+    return byVector(-y, x);
   }
 
-  public Orientation parVecteur(final int a, final int b) {
+  /**
+   * 
+   * @param a abscisse du vecteur
+   * @param b ordonnée du vecteur
+   * @return Retrouve une orientation à partir de son vecteur
+   */
+  public static Orientation byVector(final int a, final int b) {
 
     return Iterators.tryFind(Iterators.forArray(values()), new Predicate<Orientation>() {
       @Override
@@ -36,7 +67,12 @@ public enum Orientation {
     }).get();
   }
 
-  public static Orientation parCode(final String code) {
+  /**
+   * 
+   * @param code
+   * @return Retrouve une orientation à partir de son code
+   */
+  public static Orientation byCode(final String code) {
 
     return Iterators.tryFind(Iterators.forArray(values()), new Predicate<Orientation>() {
       @Override
@@ -45,5 +81,4 @@ public enum Orientation {
       }
     }).get();
   }
-
 }

@@ -53,16 +53,16 @@ function clock() {
 }
 
 function drawLawn(monitor) {
-	var pelouse = monitor.pelouse;
-	var tondeuses = monitor.tondeuses;
+	var lawn = monitor.lawn;
+	var mowers = monitor.mowers;
 
 	var cellWith = 50;
 	if ($("canvas")) {
 		$("canvas").remove();
 	}
-	$('<canvas width="' + (20 + cellWith * pelouse.largeur) + '" height="' + (20 + cellWith * pelouse.longueur) + '"></canvas>').appendTo("#canvas-container");
-	for ( var i = 0; i < pelouse.largeur; i++) {
-		for ( var j = 0; j < pelouse.longueur; j++) {
+	$('<canvas width="' + (20 + cellWith * lawn.width) + '" height="' + (20 + cellWith * lawn.height) + '"></canvas>').appendTo("#canvas-container");
+	for ( var i = 0; i < lawn.width; i++) {
+		for ( var j = 0; j < lawn.height; j++) {
 			$("canvas").drawImage({
 				source : "img/grass.jpg",
 				x : 20 + i * cellWith,
@@ -74,32 +74,32 @@ function drawLawn(monitor) {
 		}
 	}
 
-	for ( var i = 0; i < pelouse.largeur; i++) {
+	for ( var i = 0; i < lawn.width; i++) {
 		$("canvas").drawText({
 			  fillStyle: "#9cf",
 			  strokeStyle: "#2a5",
 			  strokeWidth: 1,
-			  x: 10 + cellWith * i + (cellWith / 2) , y: 10 + cellWith * (pelouse.longueur),
+			  x: 10 + cellWith * i + (cellWith / 2) , y: 10 + cellWith * (lawn.height),
 			  text: i + 1
 		});
 	}
 
-	for ( var j = 0; j < pelouse.longueur; j++) {
+	for ( var j = 0; j < lawn.height; j++) {
 		$("canvas").drawText({
 			  fillStyle: "#9cf",
 			  strokeStyle: "#2a5",
 			  strokeWidth: 1,
-			  x: 10, y: cellWith * (pelouse.longueur - j - 1) + (cellWith / 2),
+			  x: 10, y: cellWith * (lawn.height - j - 1) + (cellWith / 2),
 			  text: j + 1
 		});
 	}
 
-	for ( var i in tondeuses ) {
-		var tondeuse = tondeuses[i];
+	for ( var i in mowers ) {
+		var mower = mowers[i];
 		$("canvas").drawImage({
-			source : "img/mower-" + tondeuse.orientation + ".png",
-			x : 20 + tondeuse.cellule.position.x * cellWith,
-			y : (pelouse.longueur - tondeuse.cellule.position.y - 1) * cellWith,
+			source : "img/mower-" + mower.orientation + ".png",
+			x : 20 + mower.cell.position.x * cellWith,
+			y : (lawn.height - mower.cell.position.y - 1) * cellWith,
 			width: cellWith,
 			height: cellWith,
 			fromCenter : false,

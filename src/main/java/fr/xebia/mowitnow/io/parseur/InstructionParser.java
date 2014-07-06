@@ -3,9 +3,15 @@ package fr.xebia.mowitnow.io.parseur;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import fr.xebia.mowitnow.tonte.Instruction;
+import fr.xebia.mowitnow.mower.Instruction;
 
-public class InstructionParseur implements Parseur<String, Queue<Instruction>> {
+/**
+ * Renvoie une file instruction à partir d'un string
+ * 
+ * @author ilyes
+ *
+ */
+public class InstructionParser implements Parser<String, Queue<Instruction>> {
 
 
   @Override
@@ -14,13 +20,13 @@ public class InstructionParseur implements Parseur<String, Queue<Instruction>> {
     for (char instruction : source.toCharArray()) {
       switch (instruction) {
         case 'G':
-          instructions.add(Instruction.PIVOTER_GAUCHE);
+          instructions.add(Instruction.ROTATE_LEFT);
           break;
         case 'D':
-          instructions.add(Instruction.PIVOTER_DROITE);
+          instructions.add(Instruction.ROTATE_RIGHT);
           break;
         case 'A':
-          instructions.add(Instruction.AVANCER);
+          instructions.add(Instruction.FORWARD);
           break;
         default:
           throw new IllegalArgumentException(
@@ -30,5 +36,4 @@ public class InstructionParseur implements Parseur<String, Queue<Instruction>> {
     }
     return instructions;
   }
-
 }

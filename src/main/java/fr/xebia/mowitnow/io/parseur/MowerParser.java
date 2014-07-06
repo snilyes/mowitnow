@@ -9,27 +9,32 @@ import lombok.RequiredArgsConstructor;
 import com.google.common.base.Splitter;
 
 import fr.xebia.mowitnow.base.Orientation;
-import fr.xebia.mowitnow.tonte.Pelouse;
-import fr.xebia.mowitnow.tonte.Tondeuse;
+import fr.xebia.mowitnow.mower.Lawn;
+import fr.xebia.mowitnow.mower.Mower;
 
+/**
+ * Renvoie un objet tondeuse à partir d'un string
+ * 
+ * @author ilyes
+ *
+ */
 @RequiredArgsConstructor
-public class TondeuseParseur implements Parseur<String, Tondeuse> {
+public class MowerParser implements Parser<String, Mower> {
   private static final String SEPARATOR = " ";
   private static final String PATTERN = "^\\d+ \\d+ [N|E|W|S]$";
 
-  private final Pelouse pelouse;
+  private final Lawn pelouse;
 
 
   @Override
-  public Tondeuse parse(final String source) {
+  public Mower parse(final String source) {
     checkArgument(source.matches(PATTERN),
         "Erreur de parse des infos de la tondeuse [attendue: 'x y Orientaion'; actuelle: '"
             + source + "']");
     List<String> champs = Splitter.on(SEPARATOR).splitToList(source);
     int x = Integer.valueOf(champs.get(0)) - 1;
     int y = Integer.valueOf(champs.get(1)) - 1;
-    Orientation orientation = Orientation.parCode(champs.get(2));
-    return new Tondeuse(pelouse.cellule(x, y), orientation);
+    Orientation orientation = Orientation.byCode(champs.get(2));
+    return new Mower(pelouse.cellAt(x, y), orientation);
   }
-
 }

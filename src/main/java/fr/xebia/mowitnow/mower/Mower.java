@@ -1,4 +1,4 @@
-package fr.xebia.mowitnow.tonte;
+package fr.xebia.mowitnow.mower;
 
 import java.util.Observable;
 import java.util.Queue;
@@ -9,26 +9,26 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
-import fr.xebia.mowitnow.base.Cellule;
-import fr.xebia.mowitnow.base.Mobile;
+import fr.xebia.mowitnow.base.Cell;
+import fr.xebia.mowitnow.base.Movable;
 import fr.xebia.mowitnow.base.Orientation;
 import fr.xebia.mowitnow.base.Position;
 
 @Slf4j
 @EqualsAndHashCode(callSuper = false)
-public class Tondeuse extends Observable implements Mobile {
+public class Mower extends Observable implements Movable {
 
   @Getter
-  private Cellule cellule;
+  private Cell cell;
 
   @Getter
   private Orientation orientation;
 
-  public Tondeuse(final Cellule cellule, final Orientation orientation) {
+  public Mower(final Cell cell, final Orientation orientation) {
     super();
-    this.cellule = cellule;
+    this.cell = cell;
     this.orientation = orientation;
-    this.cellule.occuper();
+    this.cell.lock();
   }
 
   @Getter
@@ -37,34 +37,34 @@ public class Tondeuse extends Observable implements Mobile {
   private Queue<Instruction> instructions;
 
   @Override
-  public void pivoterDroite() {
-    this.orientation = this.orientation.aDroite();
+  public void rotateRight() {
+    this.orientation = this.orientation.right();
   }
 
   @Override
-  public void pivoterGauche() {
-    this.orientation = this.orientation.aGauche();
+  public void rotateLeft() {
+    this.orientation = this.orientation.left();
   }
 
   @Override
   @Synchronized
-  public void avancer() {
-    Cellule next = cellule.getVoisin(orientation);
-    if (next != null && !next.isOccupe()) {
-      this.cellule.liberer();
-      this.cellule = next;
-      this.cellule.occuper();
-      tondre();
+  public void advance() {
+    Cell next = cell.next(orientation);
+    if (next != null && !next.isLock()) {
+      this.cell.unlock();
+      this.cell = next;
+      this.cell.lock();
+      mow();
     }
   }
 
-  public void tondre() {
-    this.cellule.setTondu(true);
+  public void mow() {
+    this.cell.setMowed(true);
   }
 
-  public void demarrer() {
+  public void start() {
     log.debug("Demarrage " + toString() + " ...");
-    tondre();
+    mow();
     int index = 1;
     if (instructions != null && !instructions.isEmpty()) {
       while (!instructions.isEmpty()) {
@@ -81,7 +81,7 @@ public class Tondeuse extends Observable implements Mobile {
   }
 
   public Position position() {
-    return cellule.getPosition();
+    return cell.getPosition();
   }
 
   @Override

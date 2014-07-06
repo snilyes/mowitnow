@@ -9,5 +9,5 @@ Then la tondeuse doit etre postionnee au ($x2, $y2) et orientee vers $o2
 
 Examples:     
 |largeur|longueur|x1|y1|o1|instructions|x2|y2|o2|
-|3|3|1|2|NORD|DA|2|2|EST|
-|3|3|1|2|NORD|GGGG|1|2|NORD|
+|3|3|1|2|NORTH|DA|2|2|EAST|
+|3|3|1|2|NORTH|GGGG|1|2|NORTH|
