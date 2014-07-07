@@ -32,6 +32,12 @@ import static fr.xebia.mowitnow.unit.Constant.WEST;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Test le fonctionnement d'une tondeuse
+ * 
+ * @author ilyes
+ *
+ */
 @Slf4j
 @RunWith(JUnitParamsRunner.class)
 public class MowerTest {

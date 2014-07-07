@@ -9,6 +9,12 @@ import org.junit.runner.RunWith;
 
 import fr.xebia.mowitnow.base.Orientation;
 
+/**
+ * Test les differentes orientations 
+ * 
+ * @author ilyes
+ *
+ */
 @RunWith(JUnitParamsRunner.class)
 public class OrientationTest {
 

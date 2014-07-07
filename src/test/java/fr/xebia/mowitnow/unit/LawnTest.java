@@ -1,11 +1,5 @@
 package fr.xebia.mowitnow.unit;
 
-import static fr.xebia.mowitnow.unit.Constant.EAST;
-import static fr.xebia.mowitnow.unit.Constant.NORTH;
-import static fr.xebia.mowitnow.unit.Constant.SOUTH;
-import static fr.xebia.mowitnow.unit.Constant.WEST;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
@@ -16,7 +10,21 @@ import fr.xebia.mowitnow.base.Cell;
 import fr.xebia.mowitnow.base.Orientation;
 import fr.xebia.mowitnow.base.Position;
 import fr.xebia.mowitnow.mower.Lawn;
+import static fr.xebia.mowitnow.base.Position.at;
+import static fr.xebia.mowitnow.unit.Constant.EAST;
+import static fr.xebia.mowitnow.unit.Constant.NORTH;
+import static fr.xebia.mowitnow.unit.Constant.SOUTH;
+import static fr.xebia.mowitnow.unit.Constant.WEST;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
+/**
+ * Test de construcion d'une pelouse
+ * 
+ * @author ilyes
+ *
+ */
 @RunWith(JUnitParamsRunner.class)
 public class LawnTest {
 
@@ -32,7 +40,7 @@ public class LawnTest {
     lawn(width, height);
   }
 
-  public void lawn(final int width, final int height) {
+  private void lawn(final int width, final int height) {
     // When
     Lawn lawn = new Lawn(width, height);
 
@@ -40,18 +48,18 @@ public class LawnTest {
     for (int x = 0; x < width; x++) {
       for (int y = 0; y < height; y++) {
         Cell cell = lawn.cellAt(x, y);
-        assertEquals(new Position(x, y), cell.getPosition());
+        assertEquals(Position.at(x, y), cell.getPosition());
         assertFalse(cell.isLock());
         assertFalse(cell.isMowed());
-        assertNext(lawn, EAST, cell.getPosition(), new Position(x + 1, y));
-        assertNext(lawn, WEST, cell.getPosition(), new Position(x - 1, y));
-        assertNext(lawn, NORTH, cell.getPosition(), new Position(x, y + 1));
-        assertNext(lawn, SOUTH, cell.getPosition(), new Position(x, y - 1));
+        assertNext(lawn, EAST, cell.getPosition(), at(x + 1, y));
+        assertNext(lawn, WEST, cell.getPosition(), at(x - 1, y));
+        assertNext(lawn, NORTH, cell.getPosition(), at(x, y + 1));
+        assertNext(lawn, SOUTH, cell.getPosition(), at(x, y - 1));
       }
     }
   }
 
-  public void assertNext(final Lawn lawn, final Orientation orientation, final Position position,
+  private void assertNext(final Lawn lawn, final Orientation orientation, final Position position,
       final Position expectedPosition) {
     Cell cell = lawn.cellAt(position);
     Cell actual = cell.next(orientation);
@@ -63,7 +71,7 @@ public class LawnTest {
     assertEquals(expected, actual);
   }
 
-  public boolean in(final int position, final int min, final int max) {
+  private boolean in(final int position, final int min, final int max) {
     return position >= min && position < max;
   }
 }

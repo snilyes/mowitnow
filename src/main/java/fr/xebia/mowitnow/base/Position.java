@@ -1,5 +1,6 @@
 package fr.xebia.mowitnow.base;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -8,6 +9,7 @@ import lombok.Data;
  * @author ilyes
  *
  */
+@AllArgsConstructor(staticName = "at")
 @Data
 public class Position {
 

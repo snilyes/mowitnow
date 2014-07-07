@@ -3,7 +3,12 @@ package fr.xebia.mowitnow.unit;
 import fr.xebia.mowitnow.base.Orientation;
 import fr.xebia.mowitnow.mower.Instruction;
 
-
+/**
+ * Grouper les enums en constante pour alleger le code
+ * 
+ * @author ilyes
+ *
+ */
 interface Constant {
 
   static final Orientation EAST = Orientation.EAST;

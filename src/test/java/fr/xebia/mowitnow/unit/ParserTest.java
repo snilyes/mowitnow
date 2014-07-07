@@ -1,10 +1,5 @@
 package fr.xebia.mowitnow.unit;
 
-import static fr.xebia.mowitnow.unit.Constant.A;
-import static fr.xebia.mowitnow.unit.Constant.D;
-import static fr.xebia.mowitnow.unit.Constant.G;
-import static org.junit.Assert.assertEquals;
-
 import java.util.Queue;
 
 import junitparams.JUnitParamsRunner;
@@ -21,7 +16,18 @@ import fr.xebia.mowitnow.io.parseur.MowerParser;
 import fr.xebia.mowitnow.mower.Instruction;
 import fr.xebia.mowitnow.mower.Lawn;
 import fr.xebia.mowitnow.mower.Mower;
+import static fr.xebia.mowitnow.unit.Constant.A;
+import static fr.xebia.mowitnow.unit.Constant.D;
+import static fr.xebia.mowitnow.unit.Constant.G;
 
+import static org.junit.Assert.assertEquals;
+
+/**
+ * Test de parseurs
+ * 
+ * @author ilyes
+ *
+ */
 @RunWith(JUnitParamsRunner.class)
 public class ParserTest {
 

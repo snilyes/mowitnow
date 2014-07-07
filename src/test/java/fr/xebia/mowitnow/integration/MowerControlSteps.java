@@ -6,10 +6,10 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 import fr.xebia.mowitnow.base.Orientation;
-import fr.xebia.mowitnow.base.Position;
 import fr.xebia.mowitnow.io.parseur.InstructionParser;
 import fr.xebia.mowitnow.mower.Lawn;
 import fr.xebia.mowitnow.mower.Mower;
+import static fr.xebia.mowitnow.base.Position.at;
 
 import static org.junit.Assert.assertEquals;
 
@@ -26,7 +26,7 @@ public class MowerControlSteps {
 
 	@Given("une tondeuse coordonnee au ($x1, $y1) et orientee vers $o1")
 	public void mower(@Named("x1") final int x, @Named("y1") final int y, @Named("o1") final Orientation orientation) {
-		mower = new Mower(lawn.cellAt(new Position(x, y)), orientation);
+		mower = new Mower(lawn.cellAt(at(x, y)), orientation);
 	}
 	
 	@When("la tondeuse execute les instructions suivantes : $instructions")

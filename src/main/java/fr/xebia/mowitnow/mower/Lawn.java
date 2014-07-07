@@ -1,6 +1,5 @@
 package fr.xebia.mowitnow.mower;
 
-import static com.google.common.base.Preconditions.checkArgument;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
@@ -10,6 +9,7 @@ import fr.xebia.mowitnow.base.Cell;
 import fr.xebia.mowitnow.base.Orientation;
 import fr.xebia.mowitnow.base.Position;
 import fr.xebia.mowitnow.util.AsciiGrid;
+import static com.google.common.base.Preconditions.checkArgument;
 
 /**
  * Reprsente une pelouse
@@ -48,7 +48,7 @@ public class Lawn {
     grid = new Cell[width][height];
     for (int x = 0; x < width; x++) {
       for (int y = 0; y < height; y++) {
-        grid[x][y] = new Cell(new Position(x, y));
+        grid[x][y] = new Cell(Position.at(x, y));
       }
     }
 
