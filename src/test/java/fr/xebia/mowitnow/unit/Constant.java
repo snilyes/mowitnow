@@ -7,17 +7,18 @@ import fr.xebia.mowitnow.mower.Instruction;
  * Grouper les enums en constante pour alleger le code
  * 
  * @author ilyes
- *
+ * 
  */
 interface Constant {
 
-  static final Orientation EAST = Orientation.EAST;
-  static final Orientation NORTH = Orientation.NORTH;
-  static final Orientation WEST = Orientation.WEST;
-  static final Orientation SOUTH = Orientation.SOUTH;
+	// Orientations
+	static final Orientation EAST = Orientation.EAST;
+	static final Orientation NORTH = Orientation.NORTH;
+	static final Orientation WEST = Orientation.WEST;
+	static final Orientation SOUTH = Orientation.SOUTH;
 
-  static final Instruction D = Instruction.ROTATE_RIGHT;
-  static final Instruction G = Instruction.ROTATE_LEFT;
-  static final Instruction A = Instruction.FORWARD;
-
+	// Instructions
+	static final Instruction D = Instruction.ROTATE_RIGHT;
+	static final Instruction G = Instruction.ROTATE_LEFT;
+	static final Instruction A = Instruction.FORWARD;
 }

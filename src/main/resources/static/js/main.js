@@ -3,6 +3,21 @@ var interval;
 var stompClient = null;
 $(connect);
 
+function dropFile() {
+	var zone = new FileDrop('instructions', {input: false});
+	zone.event('send', function (files) {
+	  files.each(function (file) {
+	    file.readData(
+	      function (str) { zone.el.value = str; },
+	      function (e) { alert('Terrible error!'); },
+	      'text'
+	    );
+	  });
+	});
+}
+/**
+ * fonction de connection vers le serveur websocket
+ */
 function connect() {
 	if (stompClient) {
 	    stompClient.disconnect();
@@ -12,47 +27,69 @@ function connect() {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function(frame) {
         console.log('Connected: ' + frame);
+        
+        // Intercepter initialisation de la pelouse
         stompClient.subscribe('/mowers/init', function(data){
     		$("#instructions-error").text('').hide();
-        	drawLawn($.parseJSON(data.body));
+        	draw($.parseJSON(data.body));
         });
+        
+        
+        // Intercepter une mise à jour des tondeuses
         stompClient.subscribe('/mowers/update', function(data){
         	queue.push($.parseJSON(data.body));
         });
 
+        // Intercepter une erreur
         stompClient.subscribe('/mowers/error', function(data){
     		$("#instructions-error").append("<strong>Erreur</strong>: " + data.body).show();
     	});
 
+        // Ne commencer la démo que lorsque la connexion a été établie
     	$("#start").removeAttr("disabled").removeClass('btn-default').addClass('btn-primary');
     	$("#start").text("Start!");
-
     	$("#start").click(function() {
     		console.log('Start!');
     		start();
     	    return false;
     	});
+    	
+    	dropFile();
     });
 }
 
+/**
+ * Démarre la démo
+ */
 function start() {
+	$("#demo-result").hide();
     var instructions = $("#instructions").val();
     stompClient.send("/app/execute", {}, JSON.stringify(instructions));
     $("#mowersound")[0].play();
-    interval = self.setInterval(function(){clock();},500);
+    
+    // Chaque 0.5s rafraichir la vue de la pelouse
+    interval = self.setInterval(function(){update();},500);
 }
 
-function clock() {
+/**
+ * Mise à jour de la vue pelouse
+ */
+function update() {
 	var parsedJSON = queue.shift();
 	if (parsedJSON) {
-    	drawLawn(parsedJSON);
+    	draw(parsedJSON);
 	} else {
 	    clearInterval(interval);
 	    $("#mowersound")[0].pause();
+	    $("#demo-result").show();
 	}
 }
 
-function drawLawn(monitor) {
+/**
+ * Dessiner la pelouse et les tondeuses sur un canvas
+ * @param monitor
+ */
+function draw(monitor) {
 	var lawn = monitor.lawn;
 	var mowers = monitor.mowers;
 
@@ -60,7 +97,9 @@ function drawLawn(monitor) {
 	if ($("canvas")) {
 		$("canvas").remove();
 	}
-	$('<canvas width="' + (20 + cellWith * lawn.width) + '" height="' + (20 + cellWith * lawn.height) + '"></canvas>').appendTo("#canvas-container");
+	$('<canvas id="canvas" width="' + (20 + cellWith * lawn.width) + '" height="' + (20 + cellWith * lawn.height) + '"></canvas>').appendTo("#canvas-container");
+
+	// Afficher les cellules de la pelouse
 	for ( var i = 0; i < lawn.width; i++) {
 		for ( var j = 0; j < lawn.height; j++) {
 			$("canvas").drawImage({
@@ -74,6 +113,7 @@ function drawLawn(monitor) {
 		}
 	}
 
+	// Afficher l'abscisse
 	for ( var i = 0; i < lawn.width; i++) {
 		$("canvas").drawText({
 			  fillStyle: "#9cf",
@@ -84,6 +124,7 @@ function drawLawn(monitor) {
 		});
 	}
 
+	// Afficher l'ordonnée
 	for ( var j = 0; j < lawn.height; j++) {
 		$("canvas").drawText({
 			  fillStyle: "#9cf",
@@ -94,6 +135,8 @@ function drawLawn(monitor) {
 		});
 	}
 
+	// Afficher les tondeuses
+	$("#demo-result").empty();
 	for ( var i in mowers ) {
 		var mower = mowers[i];
 		$("canvas").drawImage({
@@ -105,6 +148,6 @@ function drawLawn(monitor) {
 			fromCenter : false,
 			scale: 0.7
 		});
+		$("#demo-result").append('<p>La tondeuse ' + (i*1 + 1) + ' => (' +  mower.cell.position.x + ',' + mower.cell.position.y + ',' + mower.orientation + ')</p>');
 	}
 }
-

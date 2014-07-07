@@ -7,12 +7,6 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <style>
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }
-        </style>
         <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="css/main.css">
         <!--[if lt IE 9]>
@@ -23,8 +17,9 @@
     <body>
         <div class="container">
 			<div class="page-header">
-	        	<h1>MowItNow</h1>
+	        	<h1>Demo Mow It Now</h1>
 	      	</div>
+
             <form class="form-horizontal" accept-charset="UTF-8">
 				<fieldset>
 					<div id="instructions-group" class="control-group">
@@ -35,6 +30,7 @@
 GAGAGAGAA
 3 3 E
 AADAADADDA</textarea>
+							<p class="text-info">Voux pouvez droper ici le fichier d'instructions.</p>
 							<span id="instructions-error" class="hide alert alert-danger"></span>
 						</div>
 					</div>
@@ -45,18 +41,23 @@ AADAADADDA</textarea>
 					</div>
 				</fieldset>
 			</form>
-			<div id="canvas-container"></div>
+			<div class="row">
+				<div id="canvas-container" class="col-xs-4"></div>
+				<div id="demo-result" class="col-xs-4 alert alert-success hide right"></div>
+			</div>
+			
             <hr>
             <footer>
                 <p>&copy; MowItNow 2014</p>
             </footer>
         </div>
         <audio id="mowersound" preload="auto">
-    		<source src="sound/mower.ogg" type="application/ogg">
+    		<source src="sound/mower.ogg" type="application/ogg" ></source>
     	</audio>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 		<script src="js/vendor/jcanvas.min.js"></script>
+        <script src="js/vendor/filedrop-min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/vendor/sockjs-0.3.4.js"></script>
         <script src="js/vendor/stomp.js"></script>
