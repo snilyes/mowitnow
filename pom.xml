@@ -154,13 +154,6 @@
 			<!-- <version>2.3.0</version> -->
 		</dependency>
 
-
-		<!-- Jackson JSON Processor -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.codehaus.jackson</groupId> -->
-		<!-- <artifactId>jackson-mapper-asl</artifactId> -->
-		<!-- </dependency> -->
-		<!-- Logging with SLF4J & LogBack -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
@@ -207,29 +200,50 @@
 			<groupId>de.codecentric</groupId>
 			<artifactId>jbehave-junit-runner</artifactId>
 		</dependency>
-		
+
 		<!-- Selenium -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-firefox-driver</artifactId>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-firefox-driver</artifactId>
 			<version>2.42.2</version>
-	        <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-server</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
 			<version>2.42.2</version>
-            <scope>test</scope>
-        </dependency>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
 
 			<plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-failsafe-plugin</artifactId>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>reserve-server-network-port</id>
+						<goals>
+							<goal>reserve-network-port</goal>
+						</goals>
+						<configuration>
+							<portNames>
+								<portName>server.port</portName>
+							</portNames>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
 				<configuration>
+					<systemPropertyVariables>
+						<server.port>${server.port}</server.port>
+					</systemPropertyVariables>
 					<excludes>
 						<exclude>**/*Test.java</exclude>
 					</excludes>
@@ -255,23 +269,23 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-eclipse-plugin</artifactId> -->
-<!-- 				<version>${maven.eclipse.plugin}</version> -->
-<!-- 				<configuration> -->
-<!-- 					<wtpversion>2.0</wtpversion> -->
-<!-- 					<downloadSources>true</downloadSources> -->
-<!-- 					<downloadJavadocs>false</downloadJavadocs> -->
-<!-- 					<ajdtVersion>none</ajdtVersion> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.maven.plugins</groupId> -->
+			<!-- <artifactId>maven-eclipse-plugin</artifactId> -->
+			<!-- <version>${maven.eclipse.plugin}</version> -->
+			<!-- <configuration> -->
+			<!-- <wtpversion>2.0</wtpversion> -->
+			<!-- <downloadSources>true</downloadSources> -->
+			<!-- <downloadJavadocs>false</downloadJavadocs> -->
+			<!-- <ajdtVersion>none</ajdtVersion> -->
+			<!-- </configuration> -->
+			<!-- </plugin> -->
 
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<!-- <version>${maven.site.plugin}</version> -->
+				<version>${maven.site.plugin}</version>
 				<executions>
 					<execution>
 						<id>attach-descriptor</id>
