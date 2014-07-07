@@ -23,7 +23,7 @@ public class MowerParser implements Parser<String, Mower> {
   private static final String SEPARATOR = " ";
   private static final String PATTERN = "^\\d+ \\d+ [N|E|W|S]$";
 
-  private final Lawn pelouse;
+  private final Lawn lawn;
 
 
   @Override
@@ -35,6 +35,6 @@ public class MowerParser implements Parser<String, Mower> {
     int x = Integer.valueOf(champs.get(0)) - 1;
     int y = Integer.valueOf(champs.get(1)) - 1;
     Orientation orientation = Orientation.byCode(champs.get(2));
-    return new Mower(pelouse.cellAt(x, y), orientation);
+    return new Mower(lawn.cellAt(x, y), orientation);
   }
 }

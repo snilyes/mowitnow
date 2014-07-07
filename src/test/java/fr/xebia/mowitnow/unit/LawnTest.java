@@ -22,14 +22,14 @@ public class LawnTest {
 
   @Test
   @Parameters({"5,5", "3,6", "1,1"})
-  public void lawnValid(final int largeur, final int longueur) {
-    lawn(largeur, longueur);
+  public void lawnValid(final int width, final int height) {
+    lawn(width, height);
   }
 
   @Test(expected = IllegalArgumentException.class)
   @Parameters({"0,0", "0,3", "2,0"})
-  public void lawnInvalid(final int largeur, final int longueur) {
-    lawn(largeur, longueur);
+  public void lawnInvalid(final int width, final int height) {
+    lawn(width, height);
   }
 
   public void lawn(final int width, final int height) {

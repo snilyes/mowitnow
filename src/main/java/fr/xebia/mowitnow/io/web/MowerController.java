@@ -44,8 +44,8 @@ public class MowerController implements Observer {
     monitor = new Loader().fromText(message);
 
     // Surveiller les tondeuses
-    for (Mower tondeuse : monitor.getMowers()) {
-      tondeuse.addObserver(this);
+    for (Mower mower : monitor.getMowers()) {
+      mower.addObserver(this);
     }
 
     // Communiquer les positions initiales (avant executions)

@@ -1,14 +1,5 @@
 package fr.xebia.mowitnow.unit;
 
-import static fr.xebia.mowitnow.unit.Constant.A;
-import static fr.xebia.mowitnow.unit.Constant.D;
-import static fr.xebia.mowitnow.unit.Constant.EAST;
-import static fr.xebia.mowitnow.unit.Constant.G;
-import static fr.xebia.mowitnow.unit.Constant.NORTH;
-import static fr.xebia.mowitnow.unit.Constant.SOUTH;
-import static fr.xebia.mowitnow.unit.Constant.WEST;
-import static org.junit.Assert.assertEquals;
-
 import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
@@ -31,6 +22,15 @@ import fr.xebia.mowitnow.mower.Lawn;
 import fr.xebia.mowitnow.mower.Mower;
 import fr.xebia.mowitnow.unit.MowerTest.Data.DataBuilder;
 import fr.xebia.mowitnow.util.AsciiGrid;
+import static fr.xebia.mowitnow.unit.Constant.A;
+import static fr.xebia.mowitnow.unit.Constant.D;
+import static fr.xebia.mowitnow.unit.Constant.EAST;
+import static fr.xebia.mowitnow.unit.Constant.G;
+import static fr.xebia.mowitnow.unit.Constant.NORTH;
+import static fr.xebia.mowitnow.unit.Constant.SOUTH;
+import static fr.xebia.mowitnow.unit.Constant.WEST;
+
+import static org.junit.Assert.assertEquals;
 
 @Slf4j
 @RunWith(JUnitParamsRunner.class)
@@ -67,7 +67,7 @@ public class MowerTest {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(final Observable o, final Object arg) {
       log.debug(AsciiGrid.draw(lawn, mowers));
     }
 
@@ -76,9 +76,9 @@ public class MowerTest {
 
       final Data data = new Data();
 
-      static DataBuilder lawn(final int largeur, final int longueur) {
+      static DataBuilder lawn(final int width, final int height) {
         DataBuilder builder = new DataBuilder();
-        builder.data.lawn = new Lawn(largeur, longueur);
+        builder.data.lawn = new Lawn(width, height);
         return builder;
       }
 

@@ -10,6 +10,7 @@ import fr.xebia.mowitnow.base.Position;
 import fr.xebia.mowitnow.io.parseur.InstructionParser;
 import fr.xebia.mowitnow.mower.Lawn;
 import fr.xebia.mowitnow.mower.Mower;
+
 import static org.junit.Assert.assertEquals;
 
 public class MowerControlSteps {
@@ -19,8 +20,8 @@ public class MowerControlSteps {
 	private Mower mower;
 	
 	@Given("une pelouse de $largeur sur $longueur")
-	public void lawn(@Named("largeur") final int largeur, @Named("longueur") final int longueur) {
-		lawn = new Lawn(largeur, longueur);
+	public void lawn(@Named("largeur") final int width, @Named("longueur") final int height) {
+		lawn = new Lawn(width, height);
 	}
 
 	@Given("une tondeuse coordonnee au ($x1, $y1) et orientee vers $o1")

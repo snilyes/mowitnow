@@ -58,7 +58,7 @@ public final class AsciiGrid {
   private static char orientation(final Cell cell, final Mower... mowers) {
     return Iterables.find(Arrays.asList(mowers), new Predicate<Mower>() {
       @Override
-      public boolean apply(Mower input) {
+      public boolean apply(final Mower input) {
         return input.getCell().equals(cell);
       }
     }).getOrientation().getCode().charAt(0);
@@ -73,8 +73,8 @@ public final class AsciiGrid {
       super();
     }
 
-    GridBuilder line(final int largeur) {
-      return (GridBuilder) this.append('\n').append(Strings.repeat(SEPARATOR_HOR, largeur * 5))
+    GridBuilder line(final int width) {
+      return (GridBuilder) this.append('\n').append(Strings.repeat(SEPARATOR_HOR, width * 5))
           .append('\n');
     }
 
