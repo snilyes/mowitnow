@@ -4,4 +4,4 @@ jdk:
   - oraclejdk7
 
 after_success:
-  - mvn site -Pqualite
+  - mvn site
