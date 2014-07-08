@@ -1,4 +1,4 @@
-package fr.xebia.mowitnow.integration;
+package fr.xebia.mowitnow.functional;
 
 import java.util.Arrays;
 import java.util.List;

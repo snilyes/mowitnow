@@ -1,4 +1,4 @@
-package fr.xebia.mowitnow.integration;
+package fr.xebia.mowitnow.functional;
 
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;

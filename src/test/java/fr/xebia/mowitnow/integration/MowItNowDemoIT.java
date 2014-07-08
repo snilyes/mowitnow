@@ -1,13 +1,12 @@
 package fr.xebia.mowitnow.integration;
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.SpringApplication;
@@ -15,18 +14,21 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import fr.xebia.mowitnow.io.web.Application;
 
+import static org.junit.Assert.assertTrue;
+@Ignore
 public class MowItNowDemoIT {
 
   private WebDriver driver;
 
   private ConfigurableApplicationContext context;
 
-  private String instructions = "5 5" + "\n1 2 N" + "\nGAGAGAGAA" + "\n3 3 E" + "\nAADAADADDA";
+  private final String instructions = "5 5" + "\n1 2 N" + "\nGAGAGAGAA" + "\n3 3 E" + "\nAADAADADDA";
 
   @Before
   public void setUp() throws Exception {
     context = SpringApplication.run(Application.class, new String[] {});
-    driver = new FirefoxDriver();
+    driver = new HtmlUnitDriver();
+    ((HtmlUnitDriver) driver).setJavascriptEnabled(true);
     driver.get(url());
   }
 

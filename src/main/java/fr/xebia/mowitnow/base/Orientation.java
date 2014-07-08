@@ -1,6 +1,7 @@
 package fr.xebia.mowitnow.base;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import com.google.common.base.Predicate;
@@ -61,7 +62,7 @@ public enum Orientation {
 
     return Iterators.tryFind(Iterators.forArray(values()), new Predicate<Orientation>() {
       @Override
-      public boolean apply(final Orientation input) {
+      public boolean apply(@NonNull final Orientation input) {
         return input.x == a && input.y == b;
       }
     }).get();
