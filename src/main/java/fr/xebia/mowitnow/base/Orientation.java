@@ -73,7 +73,7 @@ public enum Orientation {
    * @param code
    * @return Retrouve une orientation à partir de son code
    */
-  public static Orientation byCode(final String code) {
+  public static Orientation byCode(@NonNull final String code) {
 
     return Iterators.tryFind(Iterators.forArray(values()), new Predicate<Orientation>() {
       @Override

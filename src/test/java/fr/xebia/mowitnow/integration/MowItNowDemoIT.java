@@ -15,6 +15,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import fr.xebia.mowitnow.io.web.Application;
 
 import static org.junit.Assert.assertTrue;
+
 @Ignore
 public class MowItNowDemoIT {
 
