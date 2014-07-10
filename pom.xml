@@ -11,6 +11,24 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>mowitnow</name>
+	<url>http://mowitnow.snilyes.eu.cloudbees.net/</url>
+	<organization>
+		<name>Xebia, Inc.</name>
+		<url>http://www.xebia.fr</url>
+	</organization>
+	<scm>
+		<url>https://github.com/snilyes/interview</url>
+	</scm>
+	<developers>
+		<developer>
+			<id>snilyes</id>
+			<name>Ilyes Snoussi</name>
+			<email>snoussi.ilyes@gmail.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
+	</developers>
 	<properties>
 		<java.version>1.6</java.version>
 		<commons.lang.version>2.6</commons.lang.version>
@@ -38,7 +56,7 @@
 		<project.reporting.outputDirectory>${project.build.directory}/report</project.reporting.outputDirectory>
 	</properties>
 	<dependencies>
-		<!-- Spring boot & websockets-->
+		<!-- Spring boot & websockets -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-websocket</artifactId>
@@ -55,7 +73,7 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
-	
+
 		<!-- Lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -137,17 +155,36 @@
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptors>
+						<descriptor>src/main/assembly/assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>executable</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
 							<mainClass>fr.xebia.mowitnow.io.web.Application</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
