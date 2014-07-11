@@ -15,6 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class Application {
 
   public static void main(final String[] args) {
+    System.setProperty("server.port", System.getProperty("app.port", "8080"));
     SpringApplication.run(Application.class, args);
   }
 }

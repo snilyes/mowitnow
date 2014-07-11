@@ -37,7 +37,7 @@
 		<junitparams.version>1.0.2</junitparams.version>
 		<jbehave.version>3.7.5</jbehave.version>
 		<jbehave.junit.runner.version>1.0.1</jbehave.junit.runner.version>
-
+		<start-class>fr.xebia.mowitnow.io.web.Application</start-class>
 		<!-- Qualite -->
 		<maven.checkstyle.plugin>2.7</maven.checkstyle.plugin>
 		<maven.cobertura.plugin>2.5.1</maven.cobertura.plugin>
@@ -154,7 +154,7 @@
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
-			<plugin>
+<!-- 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
 					<descriptors>
@@ -184,7 +184,21 @@
 					</archive>
 				</configuration>
 			</plugin>
-
+ -->
+ 
+       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+ 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
