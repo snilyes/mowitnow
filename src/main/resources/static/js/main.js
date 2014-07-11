@@ -11,7 +11,7 @@ function dropFile() {
 	  files.each(function (file) {
 	    file.readData(
 	      function (str) { zone.el.value = str; },
-	      function (e) { $("#instructions-error").append("<strong>Erreur</strong>: " + e).show(); },
+	      function (e) { $("#instructions-error").empty().append("<strong>Erreur</strong>: " + e).show(); },
 	      'text'
 	    );
 	  });
@@ -32,7 +32,7 @@ function connect() {
         
         // Intercepter initialisation de la pelouse
         stompClient.subscribe('/mowers/init', function(data){
-    		$("#instructions-error").text('').hide();
+    		$("#instructions-error").empty().hide();
     		monitor = $.parseJSON(data.body);
         	draw();
         });
@@ -45,7 +45,7 @@ function connect() {
 
         // Intercepter une erreur
         stompClient.subscribe('/mowers/error', function(data){
-    		$("#instructions-error").append("<strong>Erreur</strong>: " + data.body).show();
+    		$("#instructions-error").empty().append("<strong>Erreur</strong>: " + data.body).show();
     	});
 
         // Ne commencer la démo que lorsque la connexion a été établie
