@@ -60,7 +60,7 @@ public class MowerController implements Observer {
    */
   @Override
   public void update(final Observable o, final Object arg) {
-    this.messagingTemplate.convertAndSend("/mowers/update", monitor);
+    this.messagingTemplate.convertAndSend("/mowers/update", o);
   }
 
   /**

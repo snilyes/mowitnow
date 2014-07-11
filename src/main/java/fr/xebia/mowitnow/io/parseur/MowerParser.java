@@ -1,8 +1,7 @@
 package fr.xebia.mowitnow.io.parseur;
 
-import static com.google.common.base.Preconditions.checkArgument;
-
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import lombok.RequiredArgsConstructor;
 
@@ -11,6 +10,7 @@ import com.google.common.base.Splitter;
 import fr.xebia.mowitnow.base.Orientation;
 import fr.xebia.mowitnow.mower.Lawn;
 import fr.xebia.mowitnow.mower.Mower;
+import static com.google.common.base.Preconditions.checkArgument;
 
 /**
  * Renvoie un objet tondeuse à partir d'un string
@@ -24,7 +24,7 @@ public class MowerParser implements Parser<String, Mower> {
   private static final String PATTERN = "^\\d+ \\d+ [N|E|W|S]$";
 
   private final Lawn lawn;
-
+  private final AtomicInteger counter = new AtomicInteger();
 
   @Override
   public Mower parse(final String source) {
@@ -35,6 +35,6 @@ public class MowerParser implements Parser<String, Mower> {
     int x = Integer.valueOf(champs.get(0)) - 1;
     int y = Integer.valueOf(champs.get(1)) - 1;
     Orientation orientation = Orientation.byCode(champs.get(2));
-    return new Mower(lawn.cellAt(x, y), orientation);
+    return new Mower(counter.getAndIncrement(), lawn.cellAt(x, y), orientation);
   }
 }
