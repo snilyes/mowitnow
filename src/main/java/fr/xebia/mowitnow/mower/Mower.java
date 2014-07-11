@@ -101,6 +101,6 @@ public class Mower extends Observable implements Movable {
 
 	@Override
 	public String toString() {
-		return "Tondeuse (position=" + position() + ", orientation=" + orientation + ").";
+		return "Tondeuse (id=" +id + ", position=" + position() + ", orientation=" + orientation + ").";
 	}
 }

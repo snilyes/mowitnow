@@ -55,9 +55,9 @@ public class MonitorTest {
   }
 
   private Mower[] mowers() {
-    Mower t1 = new Mower(p.cellAt(0, 1), NORTH);
+    Mower t1 = new Mower(0, p.cellAt(0, 1), NORTH);
     t1.setInstructions(newLinkedList(asList(G, A, G, A, G, A, G, A, A)));
-    Mower t2 = new Mower(p.cellAt(2, 2), EAST);
+    Mower t2 = new Mower(1, p.cellAt(2, 2), EAST);
     t2.setInstructions(newLinkedList(asList(A, A, D, A, A, D, A, D, D, A)));
     return new Mower[] {t1, t2};
   }
