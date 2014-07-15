@@ -101,8 +101,7 @@ le plugin maven-site-plugin et utilisé pour générer les rapports du build sou
 
 le site est localisé ici
 ## Execution & Traces:
-<p>Pour une pelouse de largeur 5 sur une longueur 5, étant donnée une tondeuse positionnée sur la cellule (2, 2), orienté vers l'Ouest, quand la tondeuse exécute les instructions: DAAGAAGAGA
-Sa position finale est situé à la cellule (1, 3), orienté vers l'Est.</p>
+<p>Pour une pelouse de largeur 5 sur une longueur 5, une tondeuse initialement situé sur la cellule (2, 2), orienté vers l'Ouest, l'exécution des instructions: DAAGAAGAGA placera la tondeuse à la cellule (1, 3), orienté vers l'Est.</p>
 Si dessous les traces d'exécutions:
 
 <pre>
