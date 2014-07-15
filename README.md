@@ -46,8 +46,6 @@ NB: Les données en entrée peuvent être injectée sous une autre forme qu'un f
 </pre>
 
 ## Conception
-Ce projet fournit une implémentation des besoins sité ci dessus
-
 Ce projet se décompose selon les packages suivants:
 - <strong>base</strong>: fournie les classes de base (exemple : Position, Cell, ...)
 - <strong>mower</strong>: represente l'implémentation logique du besoin
@@ -76,19 +74,19 @@ Pour les tests, on propose en plus des tests unitaires (junit), des tests foncti
 
 ## Compilation & Déploiement:
 ### Sur le Cloud
-Ce projet est compilé et deployé sur le cloud "PaaS" dénommé Cloudbess utilisant Jenkins
-<br/>Le Job jenkins lié est situé https://snilyes.ci.cloudbees.com/job/xebia-interview/
-<br/>Dans le post build du job on configure un deploiement conditioné de la stabilité du build sur une JVM fournit par cloudbees le port http étant dynamique faudrait donc le récupérer depuis une variable JVM "app.port"
-<br/>La demo est disponile sur http://mowitnow.snilyes.eu.cloudbees.net/
+<p>Ce projet est compilé et deployé sur le cloud "PaaS" dénommé Cloudbess utilisant Jenkins
+, le Job jenkins lié est situé https://snilyes.ci.cloudbees.com/job/xebia-interview/ </p>.
+<p>Dans le post build du job on configure un deploiement conditioné de la stabilité du build sur une JVM fournit par cloudbees le port http étant dynamique faudrait donc le récupérer depuis une variable JVM "app.port"</p>
+La demo est disponile sur http://mowitnow.snilyes.eu.cloudbees.net/
 ### Avec Maven
-Spring boot fournit un plugin permettant de compiler et de déployer localement l'application sous le port 8080
-<br/>On doit simpelment tappez cette commande <code>mvn spring-boot:run</code>
-sur une console
-<br/>La demo sera disponile sur http://localhost:8080/
+<p>Spring boot fournit un plugin permettant de compiler et de déployer localement l'application sous le port 8080
+On doit simpelment tappez cette commande <code>mvn spring-boot:run</code>
+sur une console.</p>
+La demo sera disponile sur http://localhost:8080/
 ### En générant un jar executable
-Pour générer le jar executable, il faut simplement tapper dans la console<code>mvn clean install</code>, le plugin maven-shade-plugin va packager le jar en générant un exécutable dans <code>target/xebia-interview</code>
-<br/>Il reste qu'à lancer l'executable aveec la commande <code>java -jar xebia-interview.jar</code>
-<br/>La demo sera disponile sur http://localhost:8080/
+<p>Pour générer le jar executable, il faut simplement tapper dans la console<code>mvn clean install</code>, le plugin maven-shade-plugin va packager le jar en générant un exécutable dans <code>target/xebia-interview</code>
+Il reste qu'à lancer l'executable aveec la commande <code>java -jar xebia-interview.jar</code>.</p>
+La demo sera disponile sur http://localhost:8080/
 
 ## Doc & Qualité:
 le plugin maven-site-plugin et utilisé pour générer les rapports du build sous forme d'un site exposants: 
@@ -103,11 +101,9 @@ le plugin maven-site-plugin et utilisé pour générer les rapports du build sou
 
 le site est localisé ici
 ## Execution & Traces:
-Pour une pelouse de largeur 5 sur une longueur 5.
-<br/>Etant donnée une tondeuse positionnée sur la cellule (2, 2) et orienté vers l'Ouest
-<br/>Lorsque la tondeuse exécute les instructions: DAAGAAGAGA
-<br/>A la fin la tondeuse est positionnée sur la cellule (1, 3) et orienté vers l'Est 
-<br/>Si dessous les traces d'exécutions:
+<p>Pour une pelouse de largeur 5 sur une longueur 5, étant donnée une tondeuse positionnée sur la cellule (2, 2), orienté vers l'Ouest, quand la tondeuse exécute les instructions: DAAGAAGAGA
+Sa position finale est situé à la cellule (1, 3), orienté vers l'Est.</p>
+Si dessous les traces d'exécutions:
 
 <pre>
 17:17:05.452 [main] DEBUG fr.xebia.mowitnow.mower.Mower - Demarrage Tondeuse (id=0, position=Position(x=2, y=2), orientation=WEST). ...
