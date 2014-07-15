@@ -89,3 +89,18 @@ La demo sera disponile sur http://localhost:8080/
 Pour générer le jar executable, il faut simplement tapper dans la console<code>mvn clean install</code>, le plugin maven-shade-plugin va packager le jar en générant un exécutable dans <code>target/xebia-interview</code>
 Il reste qu'à lancer l'executable aveec la commande <code>java -jar xebia-interview.jar</code>
 La demo sera disponile sur http://localhost:8080/
+
+## Doc & Qualité:
+le plugin maven-site-plugin et utilisé pour générer les rapports du build sous forme d'un site exposants: 
+- Le rapport des tests
+- La java doc
+- Le rapport du checkstyle
+- Les infos du projets
+- Le rapport de couverture de code
+- Le rapport de l'analyse PMD
+- Le report de l'analyze findbug
+- Un rapport sur les versions des dependances et des plugins utilisés
+
+le site est localisé ici
+
+## Exemple:
