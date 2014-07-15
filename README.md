@@ -2,7 +2,7 @@ MowItNow
 =========
 Une solution technique pour un entretien technique chez Xebia.
 
-## Besoin
+## Spécifications
 <pre>
 La société MowItNow a décidé de développer une tondeuse à gazon automatique, destinée aux surfaces rectangulaires.
 
@@ -60,7 +60,7 @@ L'IHM exposé prend en entrée un fichier (en drop) ou une chaine de caractère 
 ## Tests
 Pour les tests, on propose en plus des tests unitaires (junit), des tests fonctionnels (Jbehave), et des tests integration (selenium)
 
-## Environnements technique:
+## Environnements technique
 * Langage de programmation: Java, Javascript
 * Gestionnaire de source: Git - repository: https://github.com/snilyes/mowitnow
 * Gestionnaire de projet: Maven
@@ -73,7 +73,7 @@ Pour les tests, on propose en plus des tests unitaires (junit), des tests foncti
 * Autres Dependances java: Spring boot, Spring messaging, Lambok, Guava, jackson, logback, ...
 * Autres Dependances JS: jquery, stomp.js, sockjs.js, jcanva, filedrop.js
 
-## Compilation & Déploiement:
+## Compilation & Déploiement
 ### Sur le Cloud
 Ce projet est compilé et deployé sur le cloud "PaaS" dénommé Cloudbess utilisant Jenkins
 , le Job jenkins lié est situé https://snilyes.ci.cloudbees.com/job/xebia-interview/
@@ -93,7 +93,7 @@ Il reste qu'à lancer l'executable aveec la commande <code>java -jar xebia-inter
 
 La demo sera disponile sur http://localhost:8080/
 
-## Doc & Qualité:
+## Doc & Qualité
 le plugin maven-site-plugin et utilisé pour générer les rapports du build sous forme d'un site exposants: 
 - Le rapport des tests
 - La java doc
@@ -105,7 +105,7 @@ le plugin maven-site-plugin et utilisé pour générer les rapports du build sou
 - Un rapport sur les versions des dependances et des plugins utilisés
 
 le site est localisé ici
-## Execution & Traces:
+## Execution & Traces
 Pour une pelouse de largeur 5 sur une longueur 5, une tondeuse initialement situé sur la cellule (2, 2), orienté vers l'Ouest, l'exécution des instructions: DAAGAAGAGA placera la tondeuse à la cellule (1, 3), orienté vers l'Est.
 Si dessous les traces d'exécutions:
 
