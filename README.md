@@ -76,8 +76,8 @@ Pour les tests, on propose en plus des tests unitaires (junit), des tests foncti
 
 ## Compilation & Déploiement:
 ### Sur le Cloud
-Ce projet est compilé et deployé sur le cloud "PaaS" dénommé Cloudbess utilisant Jenkins
-Le Job jenkins lié est situé https://snilyes.ci.cloudbees.com/job/xebia-interview/
+<p>Ce projet est compilé et deployé sur le cloud "PaaS" dénommé Cloudbess utilisant Jenkins
+Le Job jenkins lié est situé https://snilyes.ci.cloudbees.com/job/xebia-interview/</p>
 Dans le post build du job on configure un deploiement conditioné de la stabilité du build sur une JVM fournit par cloudbees le port http étant dynamique faudrait donc le récupérer depuis une variable JVM "app.port"
 La demo est disponile sur http://mowitnow.snilyes.eu.cloudbees.net/
 ### Avec Maven
