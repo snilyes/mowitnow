@@ -102,12 +102,13 @@ le plugin maven-site-plugin et utilisé pour générer les rapports du build sou
 - Un rapport sur les versions des dependances et des plugins utilisés
 
 le site est localisé ici
-
 ## Execution & Traces:
+Pour une pelouse de largeur 5 sur une longueur 5.
 
-Pour une pelouse de largeur 5 sur une longueur 5
 Etant donnée une tondeuse positionnée sur la cellule (2, 2) et orienté vers l'Ouest
+
 Lorsque la tondeuse exécute les instructions: DAAGAAGAGA
+
 A la fin la tondeuse est positionnée sur la cellule (1, 3) et orienté vers l'Est 
 
 Si dessous les traces d'exécutions:
