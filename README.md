@@ -54,6 +54,7 @@ Ce projet se décompose selon les packages suivants:
 
 ## Démonstration
 On propose une démonstration utilisant un serveur web embarqué (Spring boot) avec un protocoloe de communication bidirectionnelle (Websocket)
+
 L'IHM exposé prend en entrée un fichier (en drop) ou une chaine de caractère et affiche en sortie tout les 3 ms le deplacemment des tondeuses sur une pelouse reprsentée par un canevas
 
 ## Tests
@@ -74,18 +75,22 @@ Pour les tests, on propose en plus des tests unitaires (junit), des tests foncti
 
 ## Compilation & Déploiement:
 ### Sur le Cloud
-<p>Ce projet est compilé et deployé sur le cloud "PaaS" dénommé Cloudbess utilisant Jenkins
-, le Job jenkins lié est situé https://snilyes.ci.cloudbees.com/job/xebia-interview/ </p>.
-<p>Dans le post build du job on configure un deploiement conditioné de la stabilité du build sur une JVM fournit par cloudbees le port http étant dynamique faudrait donc le récupérer depuis une variable JVM "app.port"</p>
+Ce projet est compilé et deployé sur le cloud "PaaS" dénommé Cloudbess utilisant Jenkins
+, le Job jenkins lié est situé https://snilyes.ci.cloudbees.com/job/xebia-interview/
+
+Dans le post build du job on configure un deploiement conditioné de la stabilité du build sur une JVM fournit par cloudbees le port http étant dynamique faudrait donc le récupérer depuis une variable JVM "app.port"
+
 La demo est disponile sur http://mowitnow.snilyes.eu.cloudbees.net/
 ### Avec Maven
-<p>Spring boot fournit un plugin permettant de compiler et de déployer localement l'application sous le port 8080
+Spring boot fournit un plugin permettant de compiler et de déployer localement l'application sous le port 8080
 On doit simpelment tappez cette commande <code>mvn spring-boot:run</code>
-sur une console.</p>
+sur une console.
+
 La demo sera disponile sur http://localhost:8080/
 ### En générant un jar executable
-<p>Pour générer le jar executable, il faut simplement tapper dans la console<code>mvn clean install</code>, le plugin maven-shade-plugin va packager le jar en générant un exécutable dans <code>target/xebia-interview</code>
-Il reste qu'à lancer l'executable aveec la commande <code>java -jar xebia-interview.jar</code>.</p>
+Pour générer le jar executable, il faut simplement tapper dans la console<code>mvn clean install</code>, le plugin maven-shade-plugin va packager le jar en générant un exécutable dans <code>target/xebia-interview</code>
+Il reste qu'à lancer l'executable aveec la commande <code>java -jar xebia-interview.jar</code>.
+
 La demo sera disponile sur http://localhost:8080/
 
 ## Doc & Qualité:
@@ -101,7 +106,7 @@ le plugin maven-site-plugin et utilisé pour générer les rapports du build sou
 
 le site est localisé ici
 ## Execution & Traces:
-<p>Pour une pelouse de largeur 5 sur une longueur 5, une tondeuse initialement situé sur la cellule (2, 2), orienté vers l'Ouest, l'exécution des instructions: DAAGAAGAGA placera la tondeuse à la cellule (1, 3), orienté vers l'Est.</p>
+Pour une pelouse de largeur 5 sur une longueur 5, une tondeuse initialement situé sur la cellule (2, 2), orienté vers l'Ouest, l'exécution des instructions: DAAGAAGAGA placera la tondeuse à la cellule (1, 3), orienté vers l'Est.
 Si dessous les traces d'exécutions:
 
 <pre>
