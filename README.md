@@ -86,6 +86,6 @@ On doit simpelment tappez cette commande <code>mvn spring-boot:run</code>
 sur une console
 La demo sera disponile sur http://localhost:8080/
 ### En générant un jar executable
-Pour générer le jar executable, il faut simplement tapper dans la console<pre>mvn clean install</pre>, le plugin maven-shade-plugin va packager le jar en générant un exécutable dans <pre>target/xebia-interview</pre>
-Il reste qu'à lancer l'executable aveec la commande <pre>java -jar xebia-interview.jar</pre>
+Pour générer le jar executable, il faut simplement tapper dans la console<code>mvn clean install</code>, le plugin maven-shade-plugin va packager le jar en générant un exécutable dans <code>target/xebia-interview</code>
+Il reste qu'à lancer l'executable aveec la commande <code>java -jar xebia-interview.jar</code>
 La demo sera disponile sur http://localhost:8080/
