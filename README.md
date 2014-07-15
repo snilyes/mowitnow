@@ -82,7 +82,10 @@ Dans le post build du job on configure un deploiement conditioné de la stabilit
 La demo est disponile sur http://mowitnow.snilyes.eu.cloudbees.net/
 ### Avec Maven
 Spring boot fournit un plugin permettant de compiler et de déployer localement l'application sous le port 8080
-On doit simpelment tappez cette commande <pre>mvn spring-boot:run</pre> sur une console
+On doit simpelment tappez cette commande <code>mvn spring-boot:run</code>
+sur une console
+La demo sera disponile sur http://localhost:8080/
 ### En générant un jar executable
 Pour générer le jar executable, il faut simplement tapper dans la console<pre>mvn clean install</pre>, le plugin maven-shade-plugin va packager le jar en générant un exécutable dans <pre>target/xebia-interview</pre>
-Il reste qu'à lancer l'executable aveec la commande <pre>java -jar xebia-interview -Dapp.port=[si on veut spécifier un port particulier mais par défaut 8080]</pre>
+Il reste qu'à lancer l'executable aveec la commande <pre>java -jar xebia-interview.jar</pre>
+La demo sera disponile sur http://localhost:8080/
