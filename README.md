@@ -103,4 +103,177 @@ le plugin maven-site-plugin et utilisé pour générer les rapports du build sou
 
 le site est localisé ici
 
-## Exemple:
+## Execution & Traces:
+
+Pour une pelouse de largeur 5 sur une longueur 5
+Etant donnée une tondeuse positionnée sur la cellule (2, 2) et orienté vers l'Ouest
+Lorsque la tondeuse exécute les instructions: DAAGAAGAGA
+A la fin la tondeuse est positionnée sur la cellule (1, 3) et orienté vers l'Est 
+
+Si dessous les traces d'exécutions:
+
+<pre>
+17:17:05.452 [main] DEBUG fr.xebia.mowitnow.mower.Mower - Demarrage Tondeuse (id=0, position=Position(x=2, y=2), orientation=WEST). ...
+17:17:05.453 [main] DEBUG fr.xebia.mowitnow.unit.MowerTest - 
+
+ 4 |   |   |   |   |   |
+-------------------------
+ 3 |   |   |   |   |   |
+-------------------------
+ 2 |   |   | N |   |   |
+-------------------------
+ 1 |   |   |   |   |   |
+-------------------------
+ 0 |   |   |   |   |   |
+-------------------------
+   | 0 | 1 | 2 | 3 | 4 |
+
+
+17:17:05.453 [main] DEBUG fr.xebia.mowitnow.mower.Mower - Execution instruction N° 1 (ROTATE_RIGHT).
+17:17:05.453 [main] DEBUG fr.xebia.mowitnow.unit.MowerTest - 
+
+ 4 |   |   |   |   |   |
+-------------------------
+ 3 |   |   | N |   |   |
+-------------------------
+ 2 |   |   | - |   |   |
+-------------------------
+ 1 |   |   |   |   |   |
+-------------------------
+ 0 |   |   |   |   |   |
+-------------------------
+   | 0 | 1 | 2 | 3 | 4 |
+
+
+17:17:05.453 [main] DEBUG fr.xebia.mowitnow.mower.Mower - Execution instruction N° 2 (FORWARD).
+17:17:05.453 [main] DEBUG fr.xebia.mowitnow.unit.MowerTest - 
+
+ 4 |   |   | N |   |   |
+-------------------------
+ 3 |   |   | - |   |   |
+-------------------------
+ 2 |   |   | - |   |   |
+-------------------------
+ 1 |   |   |   |   |   |
+-------------------------
+ 0 |   |   |   |   |   |
+-------------------------
+   | 0 | 1 | 2 | 3 | 4 |
+
+
+17:17:05.453 [main] DEBUG fr.xebia.mowitnow.mower.Mower - Execution instruction N° 3 (FORWARD).
+17:17:05.453 [main] DEBUG fr.xebia.mowitnow.unit.MowerTest - 
+
+ 4 |   |   | W |   |   |
+-------------------------
+ 3 |   |   | - |   |   |
+-------------------------
+ 2 |   |   | - |   |   |
+-------------------------
+ 1 |   |   |   |   |   |
+-------------------------
+ 0 |   |   |   |   |   |
+-------------------------
+   | 0 | 1 | 2 | 3 | 4 |
+
+
+17:17:05.453 [main] DEBUG fr.xebia.mowitnow.mower.Mower - Execution instruction N° 4 (ROTATE_LEFT).
+17:17:05.453 [main] DEBUG fr.xebia.mowitnow.unit.MowerTest - 
+
+ 4 |   | W | - |   |   |
+-------------------------
+ 3 |   |   | - |   |   |
+-------------------------
+ 2 |   |   | - |   |   |
+-------------------------
+ 1 |   |   |   |   |   |
+-------------------------
+ 0 |   |   |   |   |   |
+-------------------------
+   | 0 | 1 | 2 | 3 | 4 |
+
+
+17:17:05.453 [main] DEBUG fr.xebia.mowitnow.mower.Mower - Execution instruction N° 5 (FORWARD).
+17:17:05.454 [main] DEBUG fr.xebia.mowitnow.unit.MowerTest - 
+
+ 4 | W | - | - |   |   |
+-------------------------
+ 3 |   |   | - |   |   |
+-------------------------
+ 2 |   |   | - |   |   |
+-------------------------
+ 1 |   |   |   |   |   |
+-------------------------
+ 0 |   |   |   |   |   |
+-------------------------
+   | 0 | 1 | 2 | 3 | 4 |
+
+
+17:17:05.454 [main] DEBUG fr.xebia.mowitnow.mower.Mower - Execution instruction N° 6 (FORWARD).
+17:17:05.454 [main] DEBUG fr.xebia.mowitnow.unit.MowerTest - 
+
+ 4 | S | - | - |   |   |
+-------------------------
+ 3 |   |   | - |   |   |
+-------------------------
+ 2 |   |   | - |   |   |
+-------------------------
+ 1 |   |   |   |   |   |
+-------------------------
+ 0 |   |   |   |   |   |
+-------------------------
+   | 0 | 1 | 2 | 3 | 4 |
+
+
+17:17:05.454 [main] DEBUG fr.xebia.mowitnow.mower.Mower - Execution instruction N° 7 (ROTATE_LEFT).
+17:17:05.454 [main] DEBUG fr.xebia.mowitnow.unit.MowerTest - 
+
+ 4 | - | - | - |   |   |
+-------------------------
+ 3 | S |   | - |   |   |
+-------------------------
+ 2 |   |   | - |   |   |
+-------------------------
+ 1 |   |   |   |   |   |
+-------------------------
+ 0 |   |   |   |   |   |
+-------------------------
+   | 0 | 1 | 2 | 3 | 4 |
+
+
+17:17:05.454 [main] DEBUG fr.xebia.mowitnow.mower.Mower - Execution instruction N° 8 (FORWARD).
+17:17:05.455 [main] DEBUG fr.xebia.mowitnow.unit.MowerTest - 
+
+ 4 | - | - | - |   |   |
+-------------------------
+ 3 | E |   | - |   |   |
+-------------------------
+ 2 |   |   | - |   |   |
+-------------------------
+ 1 |   |   |   |   |   |
+-------------------------
+ 0 |   |   |   |   |   |
+-------------------------
+   | 0 | 1 | 2 | 3 | 4 |
+
+
+17:17:05.455 [main] DEBUG fr.xebia.mowitnow.mower.Mower - Execution instruction N° 9 (ROTATE_LEFT).
+17:17:05.455 [main] DEBUG fr.xebia.mowitnow.unit.MowerTest - 
+
+ 4 | - | - | - |   |   |
+-------------------------
+ 3 | - | E | - |   |   |
+-------------------------
+ 2 |   |   | - |   |   |
+-------------------------
+ 1 |   |   |   |   |   |
+-------------------------
+ 0 |   |   |   |   |   |
+-------------------------
+   | 0 | 1 | 2 | 3 | 4 |
+
+
+17:17:05.455 [main] DEBUG fr.xebia.mowitnow.mower.Mower - Execution instruction N° 10 (FORWARD).
+17:17:05.455 [main] DEBUG fr.xebia.mowitnow.mower.Mower - Arrêt Tondeuse (id=0, position=Position(x=1, y=3)
+</pre>
+
