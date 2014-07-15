@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2014-07-16T00:34:18.400">
+<file name="C:\Users\ilyes\git\interview\src\main\java\fr\xebia\mowitnow\base\Cell.java">
+<violation beginline="29" endline="29" begincolumn="26" endcolumn="33" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fr.xebia.mowitnow.base" class="Cell" variable="position" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'position'.
+</violation>
+<violation beginline="29" endline="29" begincolumn="26" endcolumn="33" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fr.xebia.mowitnow.base" class="Cell" variable="position" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'position'.
+</violation>
+<violation beginline="35" endline="35" begincolumn="19" endcolumn="22" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fr.xebia.mowitnow.base" class="Cell" variable="lock" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'lock'.
+</violation>
+<violation beginline="35" endline="35" begincolumn="19" endcolumn="22" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fr.xebia.mowitnow.base" class="Cell" variable="lock" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'lock'.
+</violation>
+<violation beginline="42" endline="42" begincolumn="19" endcolumn="23" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fr.xebia.mowitnow.base" class="Cell" variable="mowed" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'mowed'.
+</violation>
+<violation beginline="42" endline="42" begincolumn="19" endcolumn="23" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fr.xebia.mowitnow.base" class="Cell" variable="mowed" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'mowed'.
+</violation>
+</file>
+<file name="C:\Users\ilyes\git\interview\src\main\java\fr\xebia\mowitnow\base\Position.java">
+<violation beginline="16" endline="16" begincolumn="21" endcolumn="21" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fr.xebia.mowitnow.base" class="Position" variable="x" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'x'.
+</violation>
+<violation beginline="16" endline="16" begincolumn="21" endcolumn="21" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fr.xebia.mowitnow.base" class="Position" variable="x" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'x'.
+</violation>
+<violation beginline="18" endline="18" begincolumn="21" endcolumn="21" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fr.xebia.mowitnow.base" class="Position" variable="y" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'y'.
+</violation>
+<violation beginline="18" endline="18" begincolumn="21" endcolumn="21" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fr.xebia.mowitnow.base" class="Position" variable="y" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'y'.
+</violation>
+</file>
+<file name="C:\Users\ilyes\git\interview\src\main\java\fr\xebia\mowitnow\io\web\Application.java">
+<violation beginline="15" endline="21" begincolumn="26" endcolumn="1" rule="UseSingleton" ruleset="Design Rules" package="fr.xebia.mowitnow.io.web" class="Application" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UseSingleton" priority="3">
+All methods are static.  Consider using Singleton instead.  Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+<file name="C:\Users\ilyes\git\interview\src\main\java\fr\xebia\mowitnow\io\web\MowerController.java">
+<violation beginline="32" endline="32" begincolumn="11" endcolumn="26" rule="SingularField" ruleset="Design Rules" package="fr.xebia.mowitnow.io.web" class="MowerController" variable="monitor" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#SingularField" priority="3">
+Perhaps 'monitor' could be replaced by a local variable.
+</violation>
+<violation beginline="41" endline="41" begincolumn="52" endcolumn="60" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="fr.xebia.mowitnow.io.web" class="MowerController" method="execute" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+</file>
+<file name="C:\Users\ilyes\git\interview\src\main\java\fr\xebia\mowitnow\mower\Lawn.java">
+<violation beginline="65" endline="65" begincolumn="5" endcolumn="11" rule="ConstructorCallsOverridableMethod" ruleset="Design Rules" package="fr.xebia.mowitnow.mower" class="Lawn" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#ConstructorCallsOverridableMethod" priority="1">
+Overridable method 'print' called during object construction
+</violation>
+</file>
+<file name="C:\Users\ilyes\git\interview\src\main\java\fr\xebia\mowitnow\mower\Mower.java">
+<violation beginline="81" endline="89" begincolumn="17" endcolumn="17" rule="ConfusingTernary" ruleset="Design Rules" package="fr.xebia.mowitnow.mower" class="Mower" method="start" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#ConfusingTernary" priority="3">
+Avoid if (x != y) ..; else ..;
+</violation>
+</file>
+<file name="C:\Users\ilyes\git\interview\src\main\java\fr\xebia\mowitnow\util\AsciiGrid.java">
+<violation beginline="26" endline="94" begincolumn="30" endcolumn="1" rule="UseSingleton" ruleset="Design Rules" package="fr.xebia.mowitnow.util" class="AsciiGrid" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UseSingleton" priority="3">
+All methods are static.  Consider using Singleton instead.  Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+</file>
+</pmd>
