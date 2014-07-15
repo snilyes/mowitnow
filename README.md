@@ -2,7 +2,7 @@ MowItNow
 =========
 Une solution technique pour un entretien technique chez Xebia.
 
-#Besoin
+## Besoin
 <pre>
 La société MowItNow a décidé de développer une tondeuse à gazon automatique, destinée aux surfaces rectangulaires.
 
@@ -45,8 +45,8 @@ On attend le résultat suivant (position finale des tondeuses) :
 NB: Les données en entrée peuvent être injectée sous une autre forme qu'un fichier (par exemple un test automatisé).
 </pre>
 
-#Description de la conception
-Ce projet fournit une implémentation des besoins cité ci dessus et propose une démonstration utilisant un serveur web embarqué (Spring boot) avec un protocoloe de communication bidirectionnelle (Websocket)
+## Conception
+Ce projet fournit une implémentation des besoins sité ci dessus
 
 Ce projet se décompose selon les packages suivants:
 - <strong>base</strong>: fournie les classes de base (exemple : Position, Cell, ...)
@@ -54,11 +54,35 @@ Ce projet se décompose selon les packages suivants:
 - <strong>io</strong>: spécifie les entrées/sorties du système
 - <strong>util</strong>: ensemble de classes utilitaires
 
-La demonstration propose une IHM :
-- prenant en entrée soit un fichier (en drop) ou une chaine de caractère
-- établissant une connexion websocket
-- affichant chaque 3 ms le deplacemment des tondeuses sur une pelouse reprsentée par un canevas
+## Démonstration
+On propose une démonstration utilisant un serveur web embarqué (Spring boot) avec un protocoloe de communication bidirectionnelle (Websocket)
+L'IHM exposé prend en entrée un fichier (en drop) ou une chaine de caractère et affiche en sortie tout les 3 ms le deplacemment des tondeuses sur une pelouse reprsentée par un canevas
 
+## Tests
 Pour les tests, on propose en plus des tests unitaires (junit), des tests fonctionnels (Jbehave), et des tests integration (selenium)
 
+## Environnements technique:
+* Langage de programmation: Java, Javascript
+* Gestionnaire de source: Git - repository: https://github.com/snilyes/mowitnow
+* Gestionnaire de projet: Maven
+* IDE: Eclipse Luna
+* Serveur: Spring Boot (v 4)
+* Protocole: Http, Websocket
+* Tests: JUnit, Junitparams, Selenium, JBehave
+* Web: Html 5, Bootstrap
+* Integration & Déploiement Continue: Jenkins - Cloudbees - https://snilyes.ci.cloudbees.com/job/xebia-interview/
+* Autres Dependances java: Spring boot, Spring messaging, Lambok, Guava, jackson, logback, ...
+* Autres Dependances JS: jquery, stomp.js, sockjs.js, jcanva, filedrop.js
 
+## Compilation & Déploiement:
+### Sur le Cloud
+Ce projet est compilé et deployé sur le cloud "PaaS" dénommé Cloudbess utilisant Jenkins
+Le Job jenkins lié est situé https://snilyes.ci.cloudbees.com/job/xebia-interview/
+Dans le post build du job on configure un deploiement conditioné de la stabilité du build sur une JVM fournit par cloudbees le port http étant dynamique faudrait donc le récupérer depuis une variable JVM "app.port"
+La demo est disponile sur http://mowitnow.snilyes.eu.cloudbees.net/
+### Avec Maven
+Spring boot fournit un plugin permettant de compiler et de déployer localement l'application sous le port 8080
+On doit simpelment tappez cette commande <pre>mvn spring-boot:run</pre> sur une console
+### En générant un jar executable
+Pour générer le jar executable, il faut simplement tapper dans la console<pre>mvn clean install</pre>, le plugin maven-shade-plugin va packager le jar en générant un exécutable dans <pre>target/xebia-interview</pre>
+Il reste qu'à lancer l'executable aveec la commande <pre>java -jar xebia-interview -Dapp.port=[si on veut spécifier un port particulier mais par défaut 8080]</pre>
