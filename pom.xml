@@ -10,7 +10,7 @@
 	<artifactId>xebia-mowitnow</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>MowItNow</name>
+	<name>Mow It Now</name>
 	<description>Entretien technique chez Xebia</description>
 	<url>http://mowitnow.snilyes.eu.cloudbees.net/</url>
 	<organization>
@@ -36,7 +36,7 @@
 		</developer>
 	</developers>
 	<properties>
-		<java.version>1.6</java.version>
+		<java.version>1.7</java.version>
 		<commons.lang.version>2.6</commons.lang.version>
 		<guava.version>17.0</guava.version>
 		<lombok.version>1.14.2</lombok.version>
@@ -60,6 +60,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<project.reporting.outputDirectory>${project.build.directory}/report</project.reporting.outputDirectory>
+		<github.global.server>github</github.global.server>
 	</properties>
 	<dependencies>
 		<!-- Spring boot & websockets -->
@@ -142,6 +143,11 @@
 			<version>${jbehave.junit.runner.version}</version>
 			<scope>test</scope>
 		</dependency>
+		  <dependency>
+		   <groupId>org.springframework.boot</groupId>
+		   <artifactId>spring-boot-starter-test</artifactId>
+		   <scope>test</scope>
+		  </dependency>
 
 		<!-- Selenium -->
 		<dependency>
@@ -330,6 +336,22 @@
 						<version>${maven.doxia.module.markdown.version}</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.9</version>
+				<configuration>
+					<message>Creating site for ${project.version}</message>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>site</phase>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
