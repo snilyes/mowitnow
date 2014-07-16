@@ -4,11 +4,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 import fr.xebia.mowitnow.base.Cell;
 import fr.xebia.mowitnow.base.Orientation;
 import fr.xebia.mowitnow.base.Position;
-import fr.xebia.mowitnow.util.AsciiGrid;
 import static com.google.common.base.Preconditions.checkArgument;
 
 /**
@@ -17,13 +15,12 @@ import static com.google.common.base.Preconditions.checkArgument;
  * @author ilyes
  *
  */
-@Slf4j
 @EqualsAndHashCode(exclude = "grid")
 @ToString(exclude = "grid")
 public class Lawn {
 
   /**
-   * La grille representant la surface de la pelouse
+   * La grille representant la surface de la peouse
    */
   private final Cell[][] grid;
 
@@ -61,8 +58,6 @@ public class Lawn {
       setNext(x, 0, Orientation.NORTH);
       setNext(x, height - 1, Orientation.SOUTH);
     }
-
-    print();
   }
 
   private void setNext(final int x, final int y, final Orientation orientation) {
@@ -86,9 +81,5 @@ public class Lawn {
 
   public Cell cellAt(@NonNull final Position position) {
     return grid[position.getX()][position.getY()];
-  }
-
-  public void print() {
-    log.debug(AsciiGrid.draw(this));
   }
 }

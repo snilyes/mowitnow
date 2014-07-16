@@ -64,7 +64,7 @@ public final class AsciiGrid {
     }).getOrientation().getCode().charAt(0);
   }
 
-  static class GridBuilder extends StrBuilder {
+  private static class GridBuilder extends StrBuilder {
 
     private static final String SEPARATOR_VER = "|";
     private static final String SEPARATOR_HOR = "-";

@@ -5,9 +5,9 @@
 		</encoder>
 	</appender>
 	
-	<logger name="fr.xebia.mowitnow" level="debug" />
+	<logger name="fr.xebia.mowitnow" level="DEBUG" />
 	
-	<root level="debug">
+	<root level="WARN">
 		<appender-ref ref="STDOUT" />
 	</root>
 </configuration>
