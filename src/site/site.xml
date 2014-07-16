@@ -4,9 +4,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
     <bannerLeft>
-        <name>A Maven Site using Twitter Bootstrap</name>
-        <src>http://html5-slides-template.googlecode.com/git/images/akquinet-logo-small.png</src>
-        <href>http://www.akquinet.de/en</href>
+        <name>Mow It Now</name>
+        <src>images/logo.png</src>
+        <href>https://snilyes.github.io/mowitnow/</href>
     </bannerLeft>
 
     <skin>
@@ -24,7 +24,7 @@
 
     <body>
         <links>
-            <item name="akquinet" href="http://www.akquinet.de/en"/>
+            <item name="mowitnow" href="https://snilyes.github.io/mowitnow/"/>
         </links>
 
         <menu ref="reports"/>
