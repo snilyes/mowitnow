@@ -18,7 +18,9 @@
 		<url>http://www.xebia.fr</url>
 	</organization>
 	<scm>
-		<url>https://github.com/snilyes/interview</url>
+		<url>https://github.com/snilyes/mowitnow</url>
+		<connection>scm:git:git://github.com/snilyes/mowitnow.git</connection>
+		<developerConnection>scm:git:git@github.com:snilyes/mowitnow.git</developerConnection>
 	</scm>
 	<ciManagement>
 		<system>Jenkins</system>
