@@ -14,8 +14,11 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration
 public class Application {
 
+  private static final String CLOUD_BEES = "app.port";
+  private static final String SPRING_BOOT_PORT = "server.port";
+
   public static void main(final String[] args) {
-    System.setProperty("server.port", System.getProperty("app.port", "8080"));
+    System.setProperty(SPRING_BOOT_PORT, System.getProperty(CLOUD_BEES, "8080"));
     SpringApplication.run(Application.class, args);
   }
 }
