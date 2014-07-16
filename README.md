@@ -48,17 +48,17 @@ NB: Les données en entrée peuvent être injectée sous une autre forme qu'un f
 ## Conception
 Ce projet se décompose selon les packages suivants:
 - <strong>base</strong>: fournie les classes de base (exemple : Position, Cell, ...)
-- <strong>mower</strong>: represente l'implémentation logique du besoin
+- <strong>mower</strong>: représente l'implémentation logique du besoin
 - <strong>io</strong>: spécifie les entrées/sorties du système
 - <strong>util</strong>: ensemble de classes utilitaires
 
 ## Démonstration
-On propose une démonstration utilisant un serveur web embarqué (Spring boot) avec un protocoloe de communication bidirectionnelle (Websocket)
+On propose une démonstration utilisant un serveur web embarqué (Spring boot) avec le protocole de communication bidirectionnelle (Websocket)
 
-L'IHM exposé prend en entrée un fichier (en drop) ou une chaine de caractère et affiche en sortie tout les 3 ms le deplacemment des tondeuses sur une pelouse reprsentée par un canevas
+L'IHM exposé prend en entrée un fichier (en drop) ou une chaine de caractère et affiche en sortie tout les 3 ms le déplacement des tondeuses sur une pelouse représentée par un canevas
 
 ## Tests
-Pour les tests, on propose en plus des tests unitaires (junit), des tests fonctionnels (Jbehave), et des tests integration (selenium)
+Pour les tests, on propose en plus des tests unitaires (junit), des tests fonctionnels (Jbehave), et des tests d’intégrations (selenium)
 
 ## Environnements technique
 * Langage de programmation: Java, Javascript
@@ -69,43 +69,43 @@ Pour les tests, on propose en plus des tests unitaires (junit), des tests foncti
 * Protocole: Http, Websocket
 * Tests: JUnit, Junitparams, Selenium, JBehave
 * Web: Html 5, Bootstrap
-* Integration & Déploiement Continue: Jenkins - Cloudbees - https://snilyes.ci.cloudbees.com/job/xebia-interview/
-* Autres Dependances java: Spring boot, Spring messaging, Lambok, Guava, jackson, logback, ...
-* Autres Dependances JS: jquery, stomp.js, sockjs.js, jcanva, filedrop.js
+* Intégration & Déploiement Continue: Jenkins - Cloudbees - https://snilyes.ci.cloudbees.com/job/xebia-interview/
+* Autres Dépendances java: Spring boot, Spring messaging, Lambok, Guava, jackson, logback, ...
+* Autres Dépendances JS: jquery, stomp.js, sockjs.js, jcanva, filedrop.js
 
 ## Compilation & Déploiement
 ### Sur le Cloud
 Ce projet est compilé et deployé sur le cloud "PaaS" dénommé Cloudbess utilisant Jenkins
 , le Job jenkins lié est situé https://snilyes.ci.cloudbees.com/job/xebia-interview/
 
-Dans le post build du job on configure un deploiement conditioné de la stabilité du build sur une JVM fournit par cloudbees le port http étant dynamique faudrait donc le récupérer depuis une variable JVM "app.port"
+Dans le post build du job on configure un déploiement conditionné de la stabilité du build sur une JVM fournit par cloudbees le port http étant dynamique faudrait donc le récupérer depuis une variable JVM "app.port"
 
-La demo est disponible sur http://mowitnow.snilyes.eu.cloudbees.net/
+La démo est disponible sur http://mowitnow.snilyes.eu.cloudbees.net/
 ### Avec Maven
 Spring boot fournit un plugin permettant de compiler et de déployer localement l'application sous le port 8080
-On doit simpelment tappez cette commande <code>mvn spring-boot:run</code>
+On doit simplement tapez cette commande <code>mvn spring-boot:run</code>
 sur une console.
 
-La demo sera disponible sur http://localhost:8080/
-### En générant un jar executable
-Pour générer le jar executable, il faut simplement tapper dans la console<code>mvn clean install</code>, le plugin maven-shade-plugin va packager le jar en générant un exécutable dans <code>target/xebia-interview</code>
-Il reste qu'à lancer l'executable aveec la commande <code>java -jar xebia-interview.jar</code>.
+La démo sera disponible sur http://localhost:8080/
+### En générant un jar exécutable
+Pour générer le jar exécutable, il faut simplement tapper dans la console<code>mvn clean install</code>, le plugin maven-shade-plugin va packager le jar en générant un exécutable dans <code>target/xebia-interview</code>
+Il reste qu'à lancer l'exécutable avec la commande <code>java -jar xebia-interview.jar</code>.
 
-La demo sera disponible sur http://localhost:8080/
+La démo sera disponible sur http://localhost:8080/
 
 ## Doc & Qualité
-le plugin maven-site-plugin et utilisé pour générer les rapports du build sous forme d'un site exposants: 
+Le plugin maven-site-plugin et utilisé pour générer les rapports du build sous forme d'un site exposants: 
 - Le rapport des tests
 - La java doc
 - Le rapport du checkstyle
-- Les infos du projets
+- Les infos du projet
 - Le rapport de couverture de code
 - Le rapport de l'analyse PMD
 - Le report de l'analyze findbug
-- Un rapport sur les versions des dependances et des plugins utilisés
+- Un rapport sur les versions des dépendances et des plugins utilisés
 
 le site est localisé https://snilyes.github.io/mowitnow/
-## Execution & Traces
+## Exécution & Traces
 Pour une pelouse de largeur 5 sur une longueur 5, une tondeuse initialement situé sur la cellule (2, 2), orienté vers l'Ouest, l'exécution des instructions: DAAGAAGAGA placera la tondeuse à la cellule (1, 3), orienté vers l'Est.
 Si dessous les traces d'exécutions:
 
