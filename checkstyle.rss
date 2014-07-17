@@ -2,14 +2,14 @@
 
 <rss version="0.91">
   <channel>
-    <title>MowItNow - Checkstyle report</title>
+    <title>Mow It Now - Checkstyle report</title>
     <link>http://mowitnow.snilyes.eu.cloudbees.net/</link>
-    <description>MowItNow - Checkstyle report</description>
+    <description>Mow It Now - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2014 Xebia, Inc.</copyright>
     <item>
       <title>File: 17,
-             Errors: 294,
+             Errors: 295,
              Warnings: 0,
              Infos: 0
       </title>
@@ -108,7 +108,7 @@
                   0
                 </td>
                 <td>
-                  6
+                  9
                 </td>
               </tr>
                           <tr>
@@ -234,7 +234,7 @@
                   0
                 </td>
                 <td>
-                  18
+                  16
                 </td>
               </tr>
                           <tr>
