@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
  * Classe permettant la configuration spring et le demarrage d'un serveur Spring Boot embarqué
  * 
  * @author ilyes
- *
+ * 
  */
 @ComponentScan
 @EnableAutoConfiguration

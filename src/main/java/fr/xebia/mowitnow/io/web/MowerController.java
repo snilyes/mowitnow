@@ -20,7 +20,7 @@ import fr.xebia.mowitnow.mower.Mower;
  * Contolleur pour les échanges websocket surveillant les déplacements des tondeuses
  * 
  * @author ilyes
- *
+ * 
  */
 @Controller
 @Slf4j

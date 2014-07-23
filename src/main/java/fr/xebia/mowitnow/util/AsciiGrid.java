@@ -20,7 +20,7 @@ import fr.xebia.mowitnow.mower.Mower;
  * tondeuses orientées
  * 
  * @author ilyes
- *
+ * 
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AsciiGrid {

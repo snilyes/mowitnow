@@ -7,7 +7,7 @@ import lombok.Data;
  * Identifie une position de coordonnées (x, y)
  * 
  * @author ilyes
- *
+ * 
  */
 @AllArgsConstructor(staticName = "at")
 @Data

@@ -4,7 +4,7 @@ package fr.xebia.mowitnow.mower;
  * Represente l'ensemble des instructions prévues
  * 
  * @author ilyes
- *
+ * 
  */
 public enum Instruction {
 

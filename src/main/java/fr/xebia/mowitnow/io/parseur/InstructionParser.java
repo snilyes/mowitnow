@@ -9,7 +9,7 @@ import fr.xebia.mowitnow.mower.Instruction;
  * Renvoie une file instruction à partir d'un string
  * 
  * @author ilyes
- *
+ * 
  */
 public class InstructionParser implements Parser<String, Queue<Instruction>> {
 

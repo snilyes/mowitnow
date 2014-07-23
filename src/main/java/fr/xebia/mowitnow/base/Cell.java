@@ -14,7 +14,7 @@ import lombok.ToString;
  * Represente une cellule d'une grille chainée
  * 
  * @author ilyes
- *
+ * 
  */
 @ToString(exclude = {"next"})
 @EqualsAndHashCode(exclude = {"next"})

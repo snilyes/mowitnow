@@ -1,64 +1,71 @@
 <!DOCTYPE html>
 <html class="no-js" lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Demo Mow it now!</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-        <link rel="icon" type="image/png" href="img/logo.png" />
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-        <link rel="stylesheet" href="css/main.css">
-        <!--[if lt IE 9]>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Demo Mow it now!</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" type="image/png" href="img/logo.png" />
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="css/main.css">
+<!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <script>window.html5 || document.write('<script src="js/lib/html5shiv.js"><\/script>')</script>
         <![endif]-->
-    </head>
-    <body>
-        <div class="container">
-			<div class="page-header">
-				<h1><img alt="" src="img/logo.png" width="80" height="80"> Mow It Now</h1>
-	      	</div>
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1>
+				<img alt="" src="img/logo.png" width="80" height="80"> Mow It
+				Now
+			</h1>
+		</div>
 
-            <form class="form-horizontal" accept-charset="UTF-8">
-				<fieldset>
-					<div id="instructions-group" class="control-group">
-						<label class="control-label" for="instructions">Instructions :</label>
-						<div class="controls">
-							<textarea id="instructions" name="instructions" class="span4" rows="5">5 5
+		<form class="form-horizontal" accept-charset="UTF-8">
+			<fieldset>
+				<div id="instructions-group" class="control-group">
+					<label class="control-label" for="instructions">Instructions
+						:</label>
+					<div class="controls">
+						<textarea id="instructions" name="instructions" class="span4"
+							rows="5">5 5
 1 2 N
 GAGAGAGAA
 3 3 E
 AADAADADDA</textarea>
-							<p class="text-info">Voux pouvez droper ici le fichier d'instructions.</p>
-							<span id="instructions-error" class="hide alert alert-danger"></span>
-						</div>
+						<p class="text-info">Voux pouvez droper ici le fichier
+							d'instructions.</p>
+						<span id="instructions-error" class="hide alert alert-danger"></span>
 					</div>
-					<div class="control-group">
-						<div class="controls">
-							<button id="start" type="submit" class="btn btn-large btn-default" disabled="disabled">Connect ...</button>
-						</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<button id="start" type="submit" class="btn btn-large btn-default"
+							disabled="disabled">Connect ...</button>
 					</div>
-				</fieldset>
-			</form>
-			<div class="row">
-				<div id="canvas-container" class="col-xs-4"></div>
-				<div id="demo-result" class="col-xs-4 alert alert-success hide right"></div>
-			</div>
-			
-            <hr>
-            <footer>
-                <p>&copy; MowItNow 2014</p>
-            </footer>
-        </div>
-        <script src="js/lib/jquery-1.9.1.min.js"></script>
-        <!-- <script>window.jQuery || document.write('<script src="js/lib/jquery-1.9.1.min.js"><\/script>')</script> -->
-		<script src="js/lib/jcanvas.min.js"></script>
-        <script src="js/lib/filedrop-min.js"></script>
-        <script src="js/lib/bootstrap.min.js"></script>
-        <script src="js/lib/sockjs-0.3.4.js"></script>
-        <script src="js/lib/stomp.js"></script>
-        <script src="js/mowitnow.js"></script>
-    </body>
+				</div>
+			</fieldset>
+		</form>
+		<div class="row">
+			<div id="canvas-container" class="col-xs-4"></div>
+			<div id="demo-result" class="col-xs-4 alert alert-success hide right"></div>
+		</div>
+
+		<hr>
+		<footer>
+			<p>&copy; MowItNow 2014</p>
+		</footer>
+	</div>
+	<script src="js/lib/jquery-1.9.1.min.js"></script>
+	<!-- <script>window.jQuery || document.write('<script src="js/lib/jquery-1.9.1.min.js"><\/script>')</script> -->
+	<script src="js/lib/jcanvas.min.js"></script>
+	<script src="js/lib/filedrop-min.js"></script>
+	<script src="js/lib/bootstrap.min.js"></script>
+	<script src="js/lib/sockjs-0.3.4.js"></script>
+	<script src="js/lib/stomp.js"></script>
+	<script src="js/mowitnow.js"></script>
+</body>
 </html>

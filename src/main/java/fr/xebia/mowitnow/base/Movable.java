@@ -4,7 +4,7 @@ package fr.xebia.mowitnow.base;
  * Represente un objet mobile
  * 
  * @author ilyes
- *
+ * 
  */
 public interface Movable {
 

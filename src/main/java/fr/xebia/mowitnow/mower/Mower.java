@@ -18,89 +18,89 @@ import fr.xebia.mowitnow.base.Position;
 @EqualsAndHashCode(callSuper = false)
 public class Mower extends Observable implements Movable {
 
-	@Getter
-	private Cell cell;
+  @Getter
+  private Cell cell;
 
-	@Getter
-	private Orientation orientation;
-	
-	@Getter
-	private final int id;
-	
+  @Getter
+  private Orientation orientation;
 
-	public Mower(final int id, final Cell cell, final Orientation orientation) {
-		super();
-		this.cell = cell;
-		this.orientation = orientation;
-		this.cell.lock();
-		this.id = id;
-	}
+  @Getter
+  @Setter
+  @NonNull
+  private Queue<Instruction> instructions;
 
-	public Mower(final Cell cell, final Orientation orientation) {
-		this(0, cell, orientation);
-	}
+  @Getter
+  private final int id;
 
-	@Getter
-	@Setter
-	@NonNull
-	private Queue<Instruction> instructions;
+  public Mower(final int id, final Cell cell, final Orientation orientation) {
+    super();
+    this.cell = cell;
+    this.orientation = orientation;
+    this.cell.lock();
+    this.id = id;
+  }
 
-	@Override
-	public void rotateRight() {
-		this.orientation = this.orientation.right();
-		notifier();
-	}
+  public Mower(final Cell cell, final Orientation orientation) {
+    this(0, cell, orientation);
+  }
 
-	@Override
-	public void rotateLeft() {
-		this.orientation = this.orientation.left();
-		notifier();
-	}
+  @Override
+  public void rotateRight() {
+    this.orientation = this.orientation.right();
+    notifier();
+  }
 
-	@Override
-	@Synchronized
-	public void advance() {
-		Cell next = cell.next(orientation);
-		if (next != null && !next.isLock()) {
-			this.cell.unlock();
-			this.cell = next;
-			this.cell.lock();
-			mow();
-			notifier();
-		}
-	}
+  @Override
+  public void rotateLeft() {
+    this.orientation = this.orientation.left();
+    notifier();
+  }
 
-	public void mow() {
-		this.cell.setMowed(true);
-	}
+  @Override
+  @Synchronized
+  public void advance() {
+    Cell next = cell.next(orientation);
+    if (next != null && !next.isLock()) {
+      this.cell.unlock();
+      this.cell = next;
+      this.cell.lock();
+      mow();
+      notifier();
+    }
+  }
 
-	public void start() {
-		log.debug("Demarrage " + toString() + " ...");
-		mow();
-		int index = 1;
-		if (instructions != null && !instructions.isEmpty()) {
-			while (!instructions.isEmpty()) {
-				Instruction instruction = instructions.poll();
-				instruction.executer(this);
-				log.debug("Execution instruction N° " + (index++) + " (" + instruction + ").");
-			}
-		} else {
-			log.warn("Tondeuse n'est pas programmée !!! ");
-		}
-		log.debug("Arrêt " + toString());
-	}
+  public void mow() {
+    this.cell.setMowed(true);
+  }
 
-	private void notifier() {
-		setChanged();
-		notifyObservers();
-	}
+  public void start() {
+    log.debug("Demarrage " + toString() + " ...");
+    mow();
+    int index = 1;
+    if (instructions != null && !instructions.isEmpty()) {
+      while (!instructions.isEmpty()) {
+        Instruction instruction = instructions.poll();
+        instruction.executer(this);
+        log.debug("Execution instruction N° " + (index++) + " (" + instruction + ").");
+      }
+    } else {
+      log.warn("Tondeuse n'est pas programmée !!! ");
+    }
+    log.debug("Arrêt " + toString());
+  }
 
-	public Position position() {
-		return cell.getPosition();
-	}
+  private void notifier() {
+    setChanged();
+    notifyObservers();
+  }
 
-	@Override
-	public String toString() {
-		return "Tondeuse (id=" +id + ", position=" + position() + ", orientation=" + orientation + ").";
-	}
+  public Position position() {
+    return cell.getPosition();
+  }
+
+  @Override
+  public String toString() {
+    return "Tondeuse (id=" + id + ", position=" + position() + ", orientation=" + orientation
+        + ").";
+  }
 }

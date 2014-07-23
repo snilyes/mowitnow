@@ -12,7 +12,7 @@ import com.google.common.collect.Iterators;
  * Les 4 directions possibles representées par un vecteur (x, y)
  * 
  * @author ilyes
- *
+ * 
  */
 @RequiredArgsConstructor
 public enum Orientation {

@@ -15,16 +15,10 @@ import fr.xebia.mowitnow.util.AsciiGrid;
  * plusieurs tondeuses sur une pelouse
  * 
  * @author ilyes
- *
+ * 
  */
 @Slf4j
 public class Monitor implements Observer {
-
-  public Monitor(Lawn lawn, List<Mower> mowers) {
-    super();
-    this.lawn = lawn;
-    this.mowers = mowers;
-  }
 
   @Getter
   @NonNull
@@ -33,6 +27,12 @@ public class Monitor implements Observer {
   @Getter
   @NonNull
   final List<Mower> mowers;
+
+  public Monitor(final Lawn lawn, final List<Mower> mowers) {
+    super();
+    this.lawn = lawn;
+    this.mowers = mowers;
+  }
 
   /**
    * Lancement des tondeuses

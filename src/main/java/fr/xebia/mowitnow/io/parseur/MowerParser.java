@@ -16,7 +16,7 @@ import static com.google.common.base.Preconditions.checkArgument;
  * Renvoie un objet tondeuse à partir d'un string
  * 
  * @author ilyes
- *
+ * 
  */
 @RequiredArgsConstructor
 public class MowerParser implements Parser<String, Mower> {

@@ -27,7 +27,7 @@ import fr.xebia.mowitnow.mower.Mower;
  * Classe permettant le chargement d'un moniteur
  * 
  * @author ilyes
- *
+ * 
  */
 public class Loader {
 
@@ -43,7 +43,8 @@ public class Loader {
   }
 
   public Monitor fromLines(@NonNull final List<String> pLines) {
-    Preconditions.checkArgument(pLines.size() > 2, "Erreur de chargement du moniteur: ficher incomplet");
+    Preconditions.checkArgument(pLines.size() > 2,
+        "Erreur de chargement du moniteur: ficher incomplet");
     Iterator<String> lines = pLines.iterator();
     LawnParser lawnParser = new LawnParser();
     InstructionParser instructionParser = new InstructionParser();
