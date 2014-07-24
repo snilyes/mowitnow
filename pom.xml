@@ -54,7 +54,7 @@
 
 		<!-- Plugins version -->
 		<maven.checkstyle.plugin>2.7</maven.checkstyle.plugin>
-		<maven.cobertura.plugin>2.5.1</maven.cobertura.plugin>
+		<maven.cobertura.plugin>2.6</maven.cobertura.plugin>
 		<maven.doxia.module.markdown.version>1.5</maven.doxia.module.markdown.version>
 		<maven.javadoc.plugin>2.9</maven.javadoc.plugin>
 		<maven.jxr.plugin>2.3</maven.jxr.plugin>
