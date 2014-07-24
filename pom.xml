@@ -220,6 +220,7 @@
 							<version>${maven.surefire.plugin}</version>
 							<configuration>
 								<outputDirectory>${project.reporting.outputDirectory}/testresults</outputDirectory>
+								<argLine>-XX:-UseSplitVerifier</argLine>								
 							</configuration>
 						</plugin>
 						<plugin>
