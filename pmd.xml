@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2014-07-17T01:59:30.541">
+<pmd version="4.3" timestamp="2014-07-24T02:03:58.507">
 <file name="C:\Users\ilyes\git\mowitnow\src\main\java\fr\xebia\mowitnow\base\Cell.java">
 <violation beginline="29" endline="29" begincolumn="26" endcolumn="33" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fr.xebia.mowitnow.base" class="Cell" variable="position" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
 Avoid unused private fields such as 'position'.
@@ -40,15 +40,24 @@ All methods are static.  Consider using Singleton instead.  Alternatively, you c
 </violation>
 </file>
 <file name="C:\Users\ilyes\git\mowitnow\src\main\java\fr\xebia\mowitnow\io\web\MowerController.java">
-<violation beginline="32" endline="32" begincolumn="11" endcolumn="26" rule="SingularField" ruleset="Design Rules" package="fr.xebia.mowitnow.io.web" class="MowerController" variable="monitor" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#SingularField" priority="3">
+<violation beginline="33" endline="33" begincolumn="11" endcolumn="26" rule="SingularField" ruleset="Design Rules" package="fr.xebia.mowitnow.io.web" class="MowerController" variable="monitor" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#SingularField" priority="3">
 Perhaps 'monitor' could be replaced by a local variable.
 </violation>
-<violation beginline="41" endline="41" begincolumn="52" endcolumn="60" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="fr.xebia.mowitnow.io.web" class="MowerController" method="execute" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+<violation beginline="42" endline="42" begincolumn="52" endcolumn="60" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="fr.xebia.mowitnow.io.web" class="MowerController" method="execute" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
 A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="80" endline="83" begincolumn="24" endcolumn="3" rule="AvoidSynchronizedAtMethodLevel" ruleset="Design Rules" package="fr.xebia.mowitnow.io.web" class="MowerController" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidSynchronizedAtMethodLevel" priority="3">
+Use block level rather than method level synchronization
+</violation>
+<violation beginline="86" endline="88" begincolumn="23" endcolumn="3" rule="AvoidSynchronizedAtMethodLevel" ruleset="Design Rules" package="fr.xebia.mowitnow.io.web" class="MowerController" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#AvoidSynchronizedAtMethodLevel" priority="3">
+Use block level rather than method level synchronization
+</violation>
+<violation beginline="87" endline="87" begincolumn="5" endcolumn="12" rule="UseNotifyAllInsteadOfNotify" ruleset="Design Rules" package="fr.xebia.mowitnow.io.web" class="MowerController" method="receive" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UseNotifyAllInsteadOfNotify" priority="3">
+Call Thread.notifyAll() rather than Thread.notify()
 </violation>
 </file>
 <file name="C:\Users\ilyes\git\mowitnow\src\main\java\fr\xebia\mowitnow\mower\Mower.java">
-<violation beginline="81" endline="89" begincolumn="17" endcolumn="17" rule="ConfusingTernary" ruleset="Design Rules" package="fr.xebia.mowitnow.mower" class="Mower" method="start" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#ConfusingTernary" priority="3">
+<violation beginline="80" endline="88" begincolumn="5" endcolumn="5" rule="ConfusingTernary" ruleset="Design Rules" package="fr.xebia.mowitnow.mower" class="Mower" method="start" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#ConfusingTernary" priority="3">
 Avoid if (x != y) ..; else ..;
 </violation>
 </file>

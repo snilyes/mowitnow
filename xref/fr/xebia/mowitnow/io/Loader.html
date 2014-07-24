@@ -37,7 +37,7 @@
 <a class="jxr_linenumber" name="27" href="#27">27</a>  <em class="jxr_javadoccomment"> * Classe permettant le chargement d'un moniteur</em>
 <a class="jxr_linenumber" name="28" href="#28">28</a>  <em class="jxr_javadoccomment"> * </em>
 <a class="jxr_linenumber" name="29" href="#29">29</a>  <em class="jxr_javadoccomment"> * @author ilyes</em>
-<a class="jxr_linenumber" name="30" href="#30">30</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="30" href="#30">30</a>  <em class="jxr_javadoccomment"> * </em>
 <a class="jxr_linenumber" name="31" href="#31">31</a>  <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="32" href="#32">32</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../fr/xebia/mowitnow/io/Loader.html">Loader</a> {
 <a class="jxr_linenumber" name="33" href="#33">33</a>  
@@ -53,23 +53,24 @@
 <a class="jxr_linenumber" name="43" href="#43">43</a>    }
 <a class="jxr_linenumber" name="44" href="#44">44</a>  
 <a class="jxr_linenumber" name="45" href="#45">45</a>    <strong class="jxr_keyword">public</strong> <a href="../../../../fr/xebia/mowitnow/mower/Monitor.html">Monitor</a> fromLines(@NonNull <strong class="jxr_keyword">final</strong> List&lt;String&gt; pLines) {
-<a class="jxr_linenumber" name="46" href="#46">46</a>      Preconditions.checkArgument(pLines.size() &gt; 2, <span class="jxr_string">"Erreur de chargement du moniteur: ficher incomplet"</span>);
-<a class="jxr_linenumber" name="47" href="#47">47</a>      Iterator&lt;String&gt; lines = pLines.iterator();
-<a class="jxr_linenumber" name="48" href="#48">48</a>      <a href="../../../../fr/xebia/mowitnow/io/parseur/LawnParser.html">LawnParser</a> lawnParser = <strong class="jxr_keyword">new</strong> <a href="../../../../fr/xebia/mowitnow/io/parseur/LawnParser.html">LawnParser</a>();
-<a class="jxr_linenumber" name="49" href="#49">49</a>      <a href="../../../../fr/xebia/mowitnow/io/parseur/InstructionParser.html">InstructionParser</a> instructionParser = <strong class="jxr_keyword">new</strong> <a href="../../../../fr/xebia/mowitnow/io/parseur/InstructionParser.html">InstructionParser</a>();
-<a class="jxr_linenumber" name="50" href="#50">50</a>      <a href="../../../../fr/xebia/mowitnow/mower/Lawn.html">Lawn</a> lawn = lawnParser.parse(lines.next());
-<a class="jxr_linenumber" name="51" href="#51">51</a>      <a href="../../../../fr/xebia/mowitnow/io/parseur/MowerParser.html">MowerParser</a> mowerParser = <strong class="jxr_keyword">new</strong> <a href="../../../../fr/xebia/mowitnow/io/parseur/MowerParser.html">MowerParser</a>(lawn);
-<a class="jxr_linenumber" name="52" href="#52">52</a>      List&lt;Mower&gt; mowers = Lists.newArrayList();
-<a class="jxr_linenumber" name="53" href="#53">53</a>      <strong class="jxr_keyword">while</strong> (lines.hasNext()) {
-<a class="jxr_linenumber" name="54" href="#54">54</a>        <a href="../../../../fr/xebia/mowitnow/mower/Mower.html">Mower</a> mower = mowerParser.parse(lines.next());
-<a class="jxr_linenumber" name="55" href="#55">55</a>        Queue&lt;Instruction&gt; instructions = instructionParser.parse(lines.next());
-<a class="jxr_linenumber" name="56" href="#56">56</a>        mower.setInstructions(instructions);
-<a class="jxr_linenumber" name="57" href="#57">57</a>        mowers.add(mower);
-<a class="jxr_linenumber" name="58" href="#58">58</a>      }
-<a class="jxr_linenumber" name="59" href="#59">59</a>      <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../fr/xebia/mowitnow/mower/Monitor.html">Monitor</a>(lawn, mowers);
-<a class="jxr_linenumber" name="60" href="#60">60</a>    }
-<a class="jxr_linenumber" name="61" href="#61">61</a>  
-<a class="jxr_linenumber" name="62" href="#62">62</a>  }
+<a class="jxr_linenumber" name="46" href="#46">46</a>      Preconditions.checkArgument(pLines.size() &gt; 2,
+<a class="jxr_linenumber" name="47" href="#47">47</a>          <span class="jxr_string">"Erreur de chargement du moniteur: ficher incomplet"</span>);
+<a class="jxr_linenumber" name="48" href="#48">48</a>      Iterator&lt;String&gt; lines = pLines.iterator();
+<a class="jxr_linenumber" name="49" href="#49">49</a>      <a href="../../../../fr/xebia/mowitnow/io/parseur/LawnParser.html">LawnParser</a> lawnParser = <strong class="jxr_keyword">new</strong> <a href="../../../../fr/xebia/mowitnow/io/parseur/LawnParser.html">LawnParser</a>();
+<a class="jxr_linenumber" name="50" href="#50">50</a>      <a href="../../../../fr/xebia/mowitnow/io/parseur/InstructionParser.html">InstructionParser</a> instructionParser = <strong class="jxr_keyword">new</strong> <a href="../../../../fr/xebia/mowitnow/io/parseur/InstructionParser.html">InstructionParser</a>();
+<a class="jxr_linenumber" name="51" href="#51">51</a>      <a href="../../../../fr/xebia/mowitnow/mower/Lawn.html">Lawn</a> lawn = lawnParser.parse(lines.next());
+<a class="jxr_linenumber" name="52" href="#52">52</a>      <a href="../../../../fr/xebia/mowitnow/io/parseur/MowerParser.html">MowerParser</a> mowerParser = <strong class="jxr_keyword">new</strong> <a href="../../../../fr/xebia/mowitnow/io/parseur/MowerParser.html">MowerParser</a>(lawn);
+<a class="jxr_linenumber" name="53" href="#53">53</a>      List&lt;Mower&gt; mowers = Lists.newArrayList();
+<a class="jxr_linenumber" name="54" href="#54">54</a>      <strong class="jxr_keyword">while</strong> (lines.hasNext()) {
+<a class="jxr_linenumber" name="55" href="#55">55</a>        <a href="../../../../fr/xebia/mowitnow/mower/Mower.html">Mower</a> mower = mowerParser.parse(lines.next());
+<a class="jxr_linenumber" name="56" href="#56">56</a>        Queue&lt;Instruction&gt; instructions = instructionParser.parse(lines.next());
+<a class="jxr_linenumber" name="57" href="#57">57</a>        mower.setInstructions(instructions);
+<a class="jxr_linenumber" name="58" href="#58">58</a>        mowers.add(mower);
+<a class="jxr_linenumber" name="59" href="#59">59</a>      }
+<a class="jxr_linenumber" name="60" href="#60">60</a>      <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../fr/xebia/mowitnow/mower/Monitor.html">Monitor</a>(lawn, mowers);
+<a class="jxr_linenumber" name="61" href="#61">61</a>    }
+<a class="jxr_linenumber" name="62" href="#62">62</a>  
+<a class="jxr_linenumber" name="63" href="#63">63</a>  }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>
