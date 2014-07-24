@@ -47,13 +47,13 @@ public class Mower extends Observable implements Movable {
   @Override
   public void rotateRight() {
     this.orientation = this.orientation.right();
-    notifier();
+    changeAndNotify();
   }
 
   @Override
   public void rotateLeft() {
     this.orientation = this.orientation.left();
-    notifier();
+    changeAndNotify();
   }
 
   @Override
@@ -65,7 +65,7 @@ public class Mower extends Observable implements Movable {
       this.cell = next;
       this.cell.lock();
       mow();
-      notifier();
+      changeAndNotify();
     }
   }
 
@@ -89,7 +89,7 @@ public class Mower extends Observable implements Movable {
     log.debug("Arrêt " + toString());
   }
 
-  private void notifier() {
+  private void changeAndNotify() {
     setChanged();
     notifyObservers();
   }

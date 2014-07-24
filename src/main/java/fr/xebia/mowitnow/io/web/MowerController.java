@@ -3,6 +3,7 @@ package fr.xebia.mowitnow.io.web;
 import java.util.Observable;
 import java.util.Observer;
 
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
@@ -43,13 +44,13 @@ public class MowerController implements Observer {
     // Charger le moniteur
     monitor = new Loader().fromText(message);
 
+    // Communiquer les positions initiales (avant executions)
+    notifyAndWait("/mowers/init", monitor);
+
     // Surveiller les tondeuses
     for (Mower mower : monitor.getMowers()) {
       mower.addObserver(this);
     }
-
-    // Communiquer les positions initiales (avant executions)
-    this.messagingTemplate.convertAndSend("/mowers/init", monitor);
 
     // Executer les instructions
     monitor.mow();
@@ -60,7 +61,7 @@ public class MowerController implements Observer {
    */
   @Override
   public void update(final Observable o, final Object arg) {
-    this.messagingTemplate.convertAndSend("/mowers/update", o);
+    notifyAndWait("/mowers/update", o);
   }
 
   /**
@@ -69,8 +70,21 @@ public class MowerController implements Observer {
    * @param e
    */
   @MessageExceptionHandler(Exception.class)
-  public void erreur(final Exception e) {
-    this.messagingTemplate.convertAndSend("/mowers/error", ExceptionUtils.getRootCauseMessage(e));
+  public void error(final Exception e) {
+    notifyAndWait("/mowers/error", ExceptionUtils.getRootCauseMessage(e));
     log.warn("Erreur!!! ", e);
   }
+
+
+  @SneakyThrows
+  private synchronized void notifyAndWait(String subscription, Object o) {
+    this.messagingTemplate.convertAndSend(subscription, o);
+    wait();
+  }
+
+  @MessageMapping("/receive")
+  public synchronized void receive() {
+    notify();
+  }
+
 }

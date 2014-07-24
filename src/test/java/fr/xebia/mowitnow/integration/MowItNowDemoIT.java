@@ -1,5 +1,7 @@
 package fr.xebia.mowitnow.integration;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,8 +18,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import fr.xebia.mowitnow.io.web.Application;
 
-import static org.junit.Assert.assertTrue;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
@@ -32,7 +32,7 @@ public class MowItNowDemoIT {
 
   @Before
   public void setUp() throws Exception {
-    driver = new FirefoxDriver(); 
+    driver = new FirefoxDriver();
   }
 
   private String url() {
@@ -46,7 +46,7 @@ public class MowItNowDemoIT {
 
   @Test
   public void demo() throws InterruptedException {
-	driver.get(url());
+    driver.get(url());
     driver.findElement(By.id("instructions")).clear();
     driver.findElement(By.id("instructions")).sendKeys(instructions);
     WebDriverWait wait = new WebDriverWait(driver, 20);

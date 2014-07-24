@@ -35,17 +35,20 @@ function connect() {
     		$("#instructions-error").empty().hide();
     		monitor = $.parseJSON(data.body);
         	draw();
+        	receive();
         });
         
         
         // Intercepter une mise à jour des tondeuses
         stompClient.subscribe('/mowers/update', function(data){
         	queue.push($.parseJSON(data.body));
+        	receive();
         });
 
         // Intercepter une erreur
         stompClient.subscribe('/mowers/error', function(data){
     		$("#instructions-error").empty().append("<strong>Erreur</strong>: " + data.body).show();
+    		receive();
     	});
 
         // Ne commencer la démo que lorsque la connexion a été établie
@@ -61,6 +64,9 @@ function connect() {
     });
 }
 
+function receive() {
+	stompClient.send("/app/receive", {}, '');
+}
 /**
  * Démarre la démo
  */

@@ -18,6 +18,9 @@
 
 
 	<body>
+		<head>
+			<link rel="shortcut icon" href="./images/logo.png" />
+		</head>
 		<links>
 			<item name="mowitnow" href="https://snilyes.github.io/mowitnow/" />
 		</links>
