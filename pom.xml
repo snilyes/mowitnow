@@ -200,6 +200,13 @@
 				</configuration>
 			</plugin>
 
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<argLine>-XX:-UseSplitVerifier</argLine>
+				</configuration>
+			</plugin>
+
 			<!-- Reporting -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -219,6 +226,7 @@
 							<artifactId>maven-surefire-report-plugin</artifactId>
 							<version>${maven.surefire.plugin}</version>
 							<configuration>
+								<argLine>-XX:-UseSplitVerifier</argLine>
 								<outputDirectory>${project.reporting.outputDirectory}/testresults</outputDirectory>
 							</configuration>
 						</plugin>
