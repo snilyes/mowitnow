@@ -88,8 +88,8 @@ sur une console.
 
 La démo sera disponible sur http://localhost:8080/
 ### En générant un jar exécutable
-Pour générer le jar exécutable, il faut simplement tapper dans la console<code>mvn clean install</code>, le plugin maven-shade-plugin va packager le jar en générant un exécutable dans <code>target/xebia-interview</code>
-Il reste qu'à lancer l'exécutable avec la commande <code>java -jar xebia-interview.jar</code>.
+Pour générer le jar exécutable, il faut simplement tapper dans la console<code>mvn clean install</code>, le plugin maven-shade-plugin va packager le jar en générant un exécutable dans le répertoire <code>target</code>
+Il reste qu'à lancer l'exécutable avec la commande <code>java -jar xebia-mowitnow-1.0-SNAPSHOT-exec.jar</code>.
 
 La démo sera disponible sur http://localhost:8080/
 
