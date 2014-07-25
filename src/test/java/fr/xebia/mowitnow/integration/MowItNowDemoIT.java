@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -56,5 +57,7 @@ public class MowItNowDemoIT {
     String result = driver.findElement(By.id("demo-result")).getText();
     assertTrue("contenu incorrect : " + result, result.contains("La tondeuse 1 => (2,3,NORTH)"));
     assertTrue("contenu incorrect : " + result, result.contains("La tondeuse 2 => (5,1,EAST)"));
+    ((JavascriptExecutor) driver).executeScript("stompClient.disconnect();");
+    driver.close();
   }
 }
